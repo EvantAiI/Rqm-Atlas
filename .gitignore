@@ -1,0 +1,7 @@
+.cache/
+__pycache__/
+.env
+web/node_modules/
+web/dist/
+web/generated/
+web/public/basemap/tiles/

@@ -1,0 +1,61 @@
+# Valide les données, teste, construit et publie le site.
+# - pull request : valider, tester, construire ; rien n'est publié
+# - push sur main, ou « Run workflow » : idem, puis publication de web/dist sur GitHub Pages
+# La même chaîne tourne en local avec act : tools/local_ci.sh (l'étape de publication y est sautée).
+name: Site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Valider les données (data/)
+        run: python3 tools/validate.py
+      - name: Tester les outils Python
+        run: python3 -m unittest discover tests
+      - name: Écrire les données de la page (web/generated/)
+        run: python3 tools/build_data.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Installer la page (web/)
+        run: npm --prefix web ci
+      - name: Construire la page (précalcul, types, lint, Vite)
+        run: npm --prefix web run build
+      - name: Tester la page
+        run: npm --prefix web test
+      - name: Préparer la publication
+        if: github.event_name != 'pull_request' && github.actor != 'nektos/act'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.actor != 'nektos/act'
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

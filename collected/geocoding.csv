@@ -1,0 +1,156 @@
+﻿adresse;ville;lat;lon;source
+25, rue Armand-Sinclair, Amqui G5J 1K3;Amqui;48.47044;-67.43643;adresses_quebec
+20, avenue Cartier, Baie-Comeau G4Z 0B5;Baie-Comeau;49.23024;-68.13424;adresses_quebec
+31, avenue Marquette, Baie-Comeau G4Z 1K4;Baie-Comeau;49.22025;-68.14811;adresses_quebec
+537, boulevard Blanche, Baie-Comeau G5C 2B2;Baie-Comeau;49.18744;-68.26172;adresses_quebec
+810, rue Bossé, Baie-Comeau G5C 1L6;Baie-Comeau;49.19319;-68.25752;adresses_quebec
+63, rue Ambroise-Fafard, Baie-Saint-Paul G3Z 2J7;Baie-Saint-Paul;47.43822;-70.50682;adresses_quebec
+10995, rue des Montagnards, Beaupré G0A 1E0;Beaupré;47.04162;-70.89923;adresses_quebec
+471, avenue Gilles-Villeneuve, Berthierville J0K 1A0;Berthierville;46.08215;-73.18272;adresses_quebec
+4928, rue Ambroise-Lafortune, Boisbriand J7H 1S6;Boisbriand;45.64147;-73.87021;adresses_quebec
+55, Île Sainte-Marguerite, Boucherville J4B 5J6;Boucherville;45.59452;-73.47344;adresses_quebec
+1000, boulevard Arthur-Sicard, Bécancour G9H 2Z8;Bécancour;46.36436;-72.39483;adresses_quebec
+10175, rue Kolipaïo, Wôlinak G0X 1B0;Bécancour (Wôlinak);46.32895;-72.42044;adresses_quebec
+200, chemin de la Rivière-des-Vases, Cacouna G0L 1G0;Cacouna;47.97283;-69.45721;adresses_quebec
+120, chemin de Gros-Cap, Les Îles-de-la-Madeleine G4T 1K8;Cap-aux-Meules;47.36888;-61.87221;adresses_quebec
+1536, chemin de l'Étang-du-Nord, Les Îles-de-la-Madeleine G4T 3Z8;Cap-aux-Meules;47.37492;-61.92295;adresses_quebec
+330, chemin Principal, Cap-aux-Meules G4T 1C9;Cap-aux-Meules;47.37676;-61.86717;openstreetmap
+776, boulevard Perron, Carleton-sur-Mer G0C 1J0;Carleton-sur-Mer;48.10227;-66.10666;adresses_quebec
+201, rue Commerciale Ouest, Chandler G0C 1K0;Chandler;48.34806;-64.68339;openstreetmap
+79, rue Commerciale Ouest, Chandler G0C 1K0;Chandler;48.34828;-64.6805;adresses_quebec
+960, rue Saint-Georges, Drummondville J2C 6A2;Drummondville;45.87368;-72.50598;adresses_quebec
+215, boulevard de York Ouest, Gaspé G4X 2W2;Gaspé;48.81296;-64.49665;adresses_quebec
+96, montée de Sandy Beach, Gaspé G4X 2V6;Gaspé;48.82264;-64.46897;adresses_quebec
+96, rue Jacques-Cartier, Gaspé G4X 2S8;Gaspé;48.83419;-64.48495;adresses_quebec
+283, boulevard Alexandre-Taché, Gatineau J9A 1L8;Gatineau;45.42278;-75.739;adresses_quebec
+10, boulevard Perron, Gesgapegiag G0C 1Y1;Gesgapegiag;48.20041;-65.93281;adresses_quebec
+167, Grande-Allée Est, Grande-Rivière G0C 1V0;Grande-Rivière;48.39583;-64.48924;adresses_quebec
+1010, promenade des Anciens, Havre-Saint-Pierre G0G 1P0;Havre-Saint-Pierre;50.23672;-63.60746;adresses_quebec
+1235, rue de la Digue, Havre-Saint-Pierre G0G 1P0;Havre-Saint-Pierre;50.2451;-63.59721;adresses_quebec
+38, place du Commerce, Montréal H3E 1T8;Ile des Sœurs;45.46763;-73.54154;adresses_quebec
+129, rue du Parc-de-l'Innovation, La Pocatière G0R 1Z0;La Pocatière;47.35729;-70.0659;adresses_quebec
+140, 4e Avenue, La Pocatière G0R 1Z0;La Pocatière;47.36685;-70.03986;openstreetmap
+401, rue Poiré, La Pocatière G0R 1Z0;La Pocatière;47.36537;-70.03786;openstreetmap
+8300, rue Saint-Patrick, LaSalle H8N 1V1;LaSalle;45.4419;-73.64128;openstreetmap
+1955, boulevard Industriel, Laval H7S 1P6;Laval;45.57615;-73.72507;adresses_quebec
+302, rue de la Rivière, Les Bergeronnes G0T 1G0;Les Bergeronnes;48.24565;-69.5467;adresses_quebec
+1750, boulevard Marie-Victorin, Longueuil J4G 1A5;Longueuil;45.56828;-73.48634;adresses_quebec
+555, boulevard Roland-Therrien, Longueuil J4H 3Y9;Longueuil;45.54503;-73.49081;adresses_quebec
+81, chemin de la Rive, Longueuil J4H 4C9;Longueuil;45.54182;-73.51115;adresses_quebec
+743, rue des Chalutiers, Lévis G6V 9P5;Lévis;46.82914;-71.10407;adresses_quebec
+603, avenue Saint-Jérôme, Matane G4W 3N1;Matane;48.85056;-67.53178;adresses_quebec
+608, avenue Saint-Rédempteur, Matane G4W 0E1;Matane;48.84131;-67.49965;adresses_quebec
+616, avenue Saint-Rédempteur, Matane G4W 1L1;Matane;48.84093;-67.49715;adresses_quebec
+850, route de la Mer, Mont-Joli G5H 3Z4;Mont-Joli;48.63977;-68.15591;adresses_quebec
+6, rue Saint-Jean-Baptiste Est, Montmagny G5V 1J7;Montmagny;46.97904;-70.56252;adresses_quebec
+1000, rue De La Gauchetière Ouest, Montréal H3B 4W5;Montréal;45.49817;-73.56622;adresses_quebec
+1100, rue Notre-Dame Ouest, Montréal H3C 1K3;Montréal;45.49453;-73.5626;adresses_quebec
+1130, rue Sherbrooke Ouest, Montréal H3A 2M8;Montréal;45.50111;-73.5767;adresses_quebec
+1205, avenue du Docteur-Penfield, Montréal H3A 1B1;Montréal;45.50001;-73.58363;adresses_quebec
+14115, rue Prince-Arthur Est, Montréal H1A 1A8;Montréal;45.51593;-73.57077;openstreetmap
+1455, boulevard De Maisonneuve Ouest, Montréal H3G 1M8;Montréal;45.49731;-73.579;adresses_quebec
+1600, boulevard René-Lévesque Ouest, Montréal H3H 1P9;Montréal;45.4934;-73.5751;adresses_quebec
+201, avenue du Président-Kennedy, Montréal H2X 3Y7;Montréal;45.50973;-73.56928;adresses_quebec
+2100, avenue Pierre-Dupuy, Montréal H3C 3R5;Montréal;45.49052;-73.54174;adresses_quebec
+2500, chemin de Polytechnique, Montréal H3T 1J4;Montréal;45.50506;-73.61266;adresses_quebec
+2900, boulevard Édouard-Montpetit, Montréal H3T 1J4;Montréal;45.50331;-73.61853;adresses_quebec
+2920, chemin de la Tour, Montréal H3T 1J4;Montréal;45.50093;-73.61623;adresses_quebec
+2920, chemin de la Tour, Montréal H3T 1N8;Montréal;45.50093;-73.61623;adresses_quebec
+3000, chemin de la Côte-Sainte-Catherine, Montréal H3T 2A7;Montréal;45.50342;-73.62121;adresses_quebec
+405, rue Sainte-Catherine Est, Montréal H2L 2C4;Montréal;45.51436;-73.56048;adresses_quebec
+4777, avenue Pierre-De Coubertin, Montréal H1V 1B3;Montréal;45.55961;-73.54953;adresses_quebec
+550, rue Sherbrooke Ouest, Montréal H3A 1B9;Montréal;45.50592;-73.57253;adresses_quebec
+6400, 16e Avenue, Montréal H1X 2S9;Montréal;45.55716;-73.5826;openstreetmap
+6855, avenue de l'Épée, Montréal H3N 2C7;Montréal;45.52665;-73.619;adresses_quebec
+759, Square Victoria, Montréal H2Y 2K3;Montréal;45.50196;-73.56098;adresses_quebec
+800, boulevard de Maisonneuve Est, Montréal H2L 4L8;Montréal;45.51634;-73.55992;adresses_quebec
+845, rue Sherbrooke Ouest, Montréal H3A 0G4;Montréal;45.5052;-73.5769;adresses_quebec
+85, rue Sainte-Catherine Ouest, Montréal H2X 3P4;Montréal;45.50909;-73.56491;adresses_quebec
+950, avenue Beaumont, Montréal H3N 1V5;Montréal;45.52418;-73.62193;adresses_quebec
+9620, rue Saint-Patrick, Montréal H8R 1R8;Montréal;45.43642;-73.65158;adresses_quebec
+999, boulevard De Maisonneuve Ouest, Montréal H3A 3L4;Montréal;45.50199;-73.57426;adresses_quebec
+1030, avenue des Sciences-de-la-Vie, Québec G1V 0A6;Québec;46.77881;-71.28005;adresses_quebec
+1065, avenue de la Médecine, Québec G1V 0A6;Québec;46.77934;-71.27582;adresses_quebec
+124, rue Saint-Pierre, Québec G1K 4A7;Québec;46.81592;-71.20298;adresses_quebec
+140, Grande Allée Est, Québec G1R 5M8;Québec;46.80359;-71.22205;adresses_quebec
+150, rue Dalhousie, Québec;Québec;46.81773;-71.20171;adresses_quebec
+2, rue des Jardins, Québec G1R 4S9;Québec;46.8138;-71.20818;adresses_quebec
+21, rue du Marché-Champlain, Québec G1K 8Z8;Québec;46.81176;-71.20266;adresses_quebec
+2325, rue de l'Université, Québec G1V 0A6;Québec;46.77918;-71.26981;adresses_quebec
+2440, boulevard Hochelaga, Québec G1V 0A6;Québec;46.77611;-71.27947;adresses_quebec
+25, rue du Marché-Champlain, Québec G1K 4H2;Québec;46.81176;-71.20266;adresses_quebec
+250, rue Saint-Paul, Québec G1K 9K9;Québec;46.81741;-71.21016;adresses_quebec
+2700, rue Einstein, Québec G1P 3W8;Québec;46.79279;-71.3095;adresses_quebec
+271, rue de l'Estuaire, Québec G1K 7P7;Québec;46.8206;-71.21362;adresses_quebec
+271, rue de l'Estuaire, Québec G1K 8S8;Québec;46.8206;-71.21362;adresses_quebec
+455, rue du Parvis, Québec G1K 9H6;Québec;46.81341;-71.22209;adresses_quebec
+475, rue du Parvis, Québec G1K 9H7;Québec;46.81341;-71.22209;adresses_quebec
+490, rue de la Couronne, Québec G1K 9A9;Québec;46.81271;-71.22439;adresses_quebec
+511, rue Saint-Joseph Est, Québec G1K 3B7;Québec;46.81454;-71.22323;openstreetmap
+870, avenue De Salaberry, Québec G1R 2T9;Québec;46.80572;-71.22705;adresses_quebec
+945, avenue Wolfe, Québec G1V 5B3;Québec;46.77644;-71.29437;adresses_quebec
+979, avenue de Bourgogne, Québec G1W 2L4;Québec;46.76607;-71.30969;adresses_quebec
+115, rue Saint-Germain Ouest, Rimouski G5L 4B6;Rimouski;48.44882;-68.53304;adresses_quebec
+120, montée Industrielle-et-Commerciale, Rimouski G5M 1B1;Rimouski;48.46548;-68.50793;adresses_quebec
+133, rue Julien-Réhel, Rimouski G5L 9B1;Rimouski;48.45578;-68.52026;adresses_quebec
+202, rue Saint-Germain Ouest, Rimouski G5L 4B7;Rimouski;48.44728;-68.53613;adresses_quebec
+205, avenue de la Cathédrale, Rimouski;Rimouski;48.44921;-68.52518;adresses_quebec
+265, 2e Rue Est, Rimouski G5L 9H3;Rimouski;48.45093;-68.50783;adresses_quebec
+288, rue Pierre-Saindon, Rimouski G5L 9A8;Rimouski;48.4454;-68.52394;adresses_quebec
+300, allée des Ursulines, Rimouski G5L 3A1;Rimouski;48.45281;-68.51255;adresses_quebec
+310, allée des Ursulines, Rimouski G5L 3A1;Rimouski;48.45289;-68.51077;adresses_quebec
+352, rue Alcide-C.-Horth, Rimouski;Rimouski;48.45049;-68.50887;adresses_quebec
+435, avenue Rouleau, Rimouski G5L 8V4;Rimouski;48.43641;-68.51678;adresses_quebec
+53, rue Saint-Germain Ouest, Rimouski G5L 4B4;Rimouski;48.4498;-68.52957;adresses_quebec
+60, rue de l'Évêché Ouest, Rimouski G5L 4H6;Rimouski;48.44825;-68.52781;adresses_quebec
+84, rue Saint-Germain Est, Rimouski G5L 1A6;Rimouski;48.4527;-68.52483;adresses_quebec
+3382, route 132 Ouest, Rimouski G0L 1B0;Rimouski (Le Bic);48.35499;-68.75473;adresses_quebec
+1000, rue du Phare, Rimouski G5M 1L8;Rimouski (Pointe-au-Père);48.52221;-68.45405;openstreetmap
+1-1, rue de la Mary, Gaspé G4X 5E9;Rivière-au-Renard;48.99393;-64.38101;openstreetmap
+187, rue Bernier, Rivière-du-Loup G5R 0P3;Rivière-du-Loup;47.82744;-69.52434;adresses_quebec
+189, boulevard de l'Hôtel-de-Ville, Rivière-du-Loup G5R 5C4;Rivière-du-Loup;47.82987;-69.5448;adresses_quebec
+65, rue de l'Hôtel-de-Ville, Rivière-du-Loup G5R 3Y7;Rivière-du-Loup;47.83579;-69.53659;adresses_quebec
+80, rue Frontenac, Rivière-du-Loup G5R 1R1;Rivière-du-Loup;47.82707;-69.5387;adresses_quebec
+445, boulevard de l'Université, Rouyn-Noranda J9X 5E4;Rouyn-Noranda;48.23057;-79.0082;adresses_quebec
+260, rue Racine Est, Saguenay G7H 1R9;Saguenay;48.42962;-71.04918;openstreetmap
+6600, chemin du Quai-Marcel-Dionne, Saguenay G7B 3N9;Saguenay;48.40069;-70.83641;adresses_quebec
+534, rue Jacques-Cartier Est, Saguenay G7H 1Z6;Saguenay (Chicoutimi);48.42535;-71.05208;openstreetmap
+555, boulevard de l'Université, Saguenay G7H 2B1;Saguenay (Chicoutimi);48.4187;-71.05213;openstreetmap
+3346, boulevard de la Grande-Baie Sud, Saguenay G7B 1G2;Saguenay (La Baie);48.3176;-70.85386;adresses_quebec
+93, route Melchior-Poirier, Saint-Anaclet-de-Lessard;Saint-Anaclet-de-Lessard;48.45859;-68.445;adresses_quebec
+122A, rue Principale, Saint-André-de-Kamouraska G0L 2H0;Saint-André-de-Kamouraska;47.6791;-69.72149;openstreetmap
+318, rue Verreault, Saint-Jean-Port-Joli G0R 3G0;Saint-Jean-Port-Joli;47.21326;-70.26551;adresses_quebec
+100, rue Claude-Audy, Saint-Jérôme J5L 0J2;Saint-Jérôme;45.78017;-74.04183;adresses_quebec
+15, 1re Avenue Ouest, Saint-Maxime-du-Mont-Louis G0E 1T0;Saint-Maxime-du-Mont-Louis;49.22889;-65.73395;adresses_quebec
+235, rue Rochette, Saint-Pascal G0L 3Y0;Saint-Pascal;47.52834;-69.81804;adresses_quebec
+111, route des Pionniers, Saint-Raymond G3L 2A8;Saint-Raymond;46.88202;-71.83138;adresses_quebec
+1205, boulevard Guillaume-Couture, Lévis G6W 0J6;Saint-Romuald;46.73524;-71.26333;openstreetmap
+1095, rue Notre-Dame, Saint-Sulpice J5W 4L9;Saint-Sulpice;45.82692;-73.35632;adresses_quebec
+1, rue du Quai, Sainte-Anne-des-Monts G4V 2B6;Sainte-Anne-des-Monts;49.13133;-66.48752;adresses_quebec
+1, rue Langlois, Sainte-Luce G0K 1P0;Sainte-Luce;48.54627;-68.39439;adresses_quebec
+169, rue Champlain, Salaberry-de-Valleyfield J6T 1X6;Salaberry-de-Valleyfield;45.25293;-74.13321;adresses_quebec
+222, rue Alphonse-Desjardins, Salaberry-de-Valleyfield J6S 2N9;Salaberry-de-Valleyfield;45.25993;-74.12092;adresses_quebec
+1, quai Mgr-Blanche, Sept-Îles G4R 5P3;Sept-Îles;50.19869;-66.38193;openstreetmap
+175, rue De La Vérendrye, Sept-Îles G4R 5B7;Sept-Îles;50.22709;-66.35467;adresses_quebec
+175, rue de la Vérendrye, Sept-Îles G4R 5B7;Sept-Îles;50.22709;-66.35467;adresses_quebec
+279, boulevard des Montagnais, Sept-Îles G4R 5R1;Sept-Îles;50.23002;-66.38778;openstreetmap
+350, avenue Jolliet, Sept-Îles G4R 2B2;Sept-Îles;50.20872;-66.37304;adresses_quebec
+406, avenue Arnaud, Sept-Îles G4R 3A9;Sept-Îles;50.20422;-66.38559;adresses_quebec
+546, avenue De Quen, Sept-Îles G4R 2R4;Sept-Îles;50.20985;-66.38529;adresses_quebec
+2500, boulevard de l'Université, Sherbrooke J1K 2R1;Sherbrooke;45.3805;-71.92478;adresses_quebec
+2600, rue Collège, Sherbrooke J1M 1Z7;Sherbrooke (Lennoxville);45.36123;-71.84136;openstreetmap
+3005, boulevard de Tracy, Sorel-Tracy J3R 1C2;Sorel-Tracy;46.01624;-73.15036;adresses_quebec
+182, rue de l'Église, Tadoussac G0T 2A0;Tadoussac;48.14287;-69.71394;openstreetmap
+835, rue Mooney Ouest, Thetford Mines;Thetford Mines;46.0756;-71.29293;openstreetmap
+495, rue Notre-Dame Ouest, Trois-Pistoles G0L 4K0;Trois-Pistoles;48.12373;-69.17943;openstreetmap
+1100, place du Technoparc, Trois-Rivières G9A 0A9;Trois-Rivières;46.35229;-72.53756;adresses_quebec
+1545, rue du Fleuve, Trois-Rivières G9A 6K4;Trois-Rivières;46.34093;-72.53896;adresses_quebec
+3095, rue Westinghouse, Trois-Rivières G9A 5E1;Trois-Rivières;46.37186;-72.65472;adresses_quebec
+3351, boulevard des Forges, Trois-Rivières G8Z 4M3;Trois-Rivières;46.34805;-72.57778;adresses_quebec
+3351, boulevard des Forges, Trois-Rivières G9A 5E6;Trois-Rivières;46.34805;-72.57778;adresses_quebec
+3930, rue Louis-Pinard, Trois-Rivières G8Y 4L9;Trois-Rivières;46.35024;-72.59136;adresses_quebec
+14, rue du Vieux-Chemin, Témiscouata-sur-le-Lac G0L 1E0;Témiscouata-sur-le-Lac;47.68253;-68.88309;adresses_quebec
+175, rue Sainte-Anne, Varennes J3X 1T5;Varennes;45.68268;-73.44064;adresses_quebec
+3300, route Marie-Victorin, Varennes;Varennes;45.70649;-73.42379;adresses_quebec
+174, rue Chef-Aimé-Romain, Wendake G0A 4V0;Wendake;46.85917;-71.3531;adresses_quebec
+98, chemin Principal, Cap-aux-Meules G4T 1C2;Îles-de-la-Madeleine;47.37676;-61.86717;openstreetmap

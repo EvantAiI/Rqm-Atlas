@@ -1,0 +1,363 @@
+﻿id;nom;sigle;categorie;type;adresse;ville;region;pays;site_web;courriel;telephone
+bio-laurentia;Bio-Laurentia;;Régulier;;93, route Melchior-Poirier, Saint-Anaclet-de-Lessard;Saint-Anaclet-de-Lessard;Québec;Canada;https://www.bio-laurentia.com/;contact@bio-laurentia.com;418 896-1943
+biopterre;Biopterre;;Régulier;Collège - CCTT;401, rue Poiré, La Pocatière G0R 1Z0;La Pocatière;Québec;Canada;https://www.biopterre.com/;info@biopterre.com;418 856-5917
+cegep-baie-comeau;Cégep de Baie-Comeau;;Régulier;;537, boulevard Blanche, Baie-Comeau G5C 2B2;Baie-Comeau;Québec;Canada;http://www.cegepbc.ca/accueil;communications@cegepbc.ca;418 589-5707
+cegep-drummondville;Cégep de Drummondville;;Régulier;;960, rue Saint-Georges, Drummondville J2C 6A2;Drummondville;Québec;Canada;https://www.cegepdrummond.ca/;;819 478-4671
+cegep-gaspesie-iles;Cégep de la Gaspésie et des Îles;;Régulier;;96, rue Jacques-Cartier, Gaspé G4X 2S8;Gaspé;Québec;Canada;http://www.cegepgim.ca/;information@cegepgim.ca;418 368-2201
+cegep-pocatiere;Cégep de La Pocatière;;Régulier;;140, 4e Avenue, La Pocatière G0R 1Z0;La Pocatière;Québec;Canada;http://www.cegeplapocatiere.qc.ca/;;418 248-7164
+cegep-matane;Cégep de Matane;;Régulier;Collège - CCTT;616, avenue Saint-Rédempteur, Matane G4W 1L1;Matane;Québec;Canada;http://www.cegep-matane.qc.ca/;;418 562-1240
+cegep-rimouski;Cégep de Rimouski;;Régulier;Collège - CCTT;60, rue de l'Évêché Ouest, Rimouski G5L 4H6;Rimouski;Québec;Canada;http://www.cegep-rimouski.qc.ca/;dg@cegep-rimouski.qc.ca;418 723-1880
+cegep-riviere-du-loup;Cégep de Rivière-du-Loup;;Régulier;Collège - CCTT;80, rue Frontenac, Rivière-du-Loup G5R 1R1;Rivière-du-Loup;Québec;Canada;http://www.cegeprdl.ca/;;418 862-6903
+cegep-sept-iles;Cégep de Sept-Îles;;Régulier;Collège - CCTT;175, rue De La Vérendrye, Sept-Îles G4R 5B7;Sept-Îles;Québec;Canada;http://www.cegep-sept-iles.qc.ca/;;418 962-9848
+cegep-valleyfield;Cégep de Valleyfield;;Régulier;;169, rue Champlain, Salaberry-de-Valleyfield J6T 1X6;Salaberry-de-Valleyfield;Québec;Canada;https://www.colval.qc.ca/;;
+CDRIN;Centre de développement en imagerie numérique (CDRIN);CDRIN;Régulier;Collège - CCTT;608, avenue Saint-Rédempteur, Matane G4W 0E1;Matane;Québec;Canada;http://www.cdrin.com/;info@cdrin.com;
+CGQ;Centre de géomatique du Québec;CGQ;Régulier;Collège - CCTT;534, rue Jacques-Cartier Est, Saguenay G7H 1Z6;Saguenay (Chicoutimi);Québec;Canada;http://www.cgq.qc.ca/;;418 698-5995
+CSBQ;Centre de la science de la biodiversité du Québec (CSBQ);CSBQ;Régulier;;1205, avenue du Docteur-Penfield, Montréal H3A 1B1;Montréal;Québec;Canada;http://qcbs.ca/fr/;info@qcbs.ca;514 398-8719
+centre-metallurgie-quebec;Centre de métallurgie du Québec;;Régulier;;3095, rue Westinghouse, Trois-Rivières G9A 5E1;Trois-Rivières;Québec;Canada;http://cmqtr.qc.ca/;;819 376-8707
+EcotoQ;Centre de recherche en écotoxicologie du Québec (EcotoQ);EcotoQ;Régulier;;490, rue de la Couronne, Québec G1K 9A9;Québec;Québec;Canada;https://ecotoq.ca/;;
+GEOTOP;Centre de recherche en géochimie et géodynamique (GEOTOP);GEOTOP;Régulier;;201, avenue du Président-Kennedy, Montréal H2X 3Y7;Montréal;Québec;Canada;http://www.geotop.ca/fr/;;514 987-4080
+CRDT;Centre de recherche sur le développement territorial (CRDT);CRDT;Régulier;;300, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://crdt.ca/;;418 723-1986
+RIVE;Centre de recherche sur les interactions bassins versants – écosystèmes aquatiques (RIVE);RIVE;Régulier;;3351, boulevard des Forges, Trois-Rivières G8Z 4M3;Trois-Rivières;Québec;Canada;https://oraprdnt.uqtr.uquebec.ca/pls/public/gscw030?owa_no_site=2137;;819 376-5011
+CTTEI;Centre de transfert technologique en écologie industrielle (CTTÉI);CTTEI;Régulier;;3005, boulevard de Tracy, Sorel-Tracy J3R 1C2;Sorel-Tracy;Québec;Canada;https://www.cttei.com/;info@cttei.com;450 551-8090
+centre-technologies-eau;Centre des technologies de l’eau;;Régulier;;1955, boulevard Industriel, Laval H7S 1P6;Laval;Québec;Canada;http://www.cteau.com/;;
+centre-etude-responsabilite-sociale;Centre d’étude en responsabilité sociale et écocitoyenneté;;Régulier;;6400, 16e Avenue, Montréal H1X 2S9;Montréal;Québec;Canada;http://www.crosemont.qc.ca/cerse;;
+CEN;Centre d’études nordiques (CEN);CEN;Régulier;OBNL;1030, avenue des Sciences-de-la-Vie, Québec G1V 0A6;Québec;Québec;Canada;https://www.cen.ulaval.ca/;info@cen.ulaval.ca;418 656-3340
+CIRADD;Centre d’initiation à la recherche et d’aide au développement durable (CIRADD);CIRADD;Régulier;Collège - CCTT;776, boulevard Perron, Carleton-sur-Mer G0C 1J0;Carleton-sur-Mer;Québec;Canada;http://www.ciradd.ca/;info@ciradd.ca;581 499-0001
+CIRODD;Centre interdisciplinaire de recherche en opérationnalisation du développement durable (CIRODD);CIRODD;Régulier;;1100, rue Notre-Dame Ouest, Montréal H3C 1K3;Montréal;Québec;Canada;http://www.cirodd.org/;info@cirodd.org;514 396-8800
+CIRRELT;Centre interuniversitaire de recherche sur les réseaux d’entreprise, la logistique et le transport (CIRRELT);CIRRELT;Régulier;Université;2920, chemin de la Tour, Montréal H3T 1J4;Montréal;Québec;Canada;https://www.cirrelt.ca/;info@cirrelt.ca;418 656-1180
+centre-quebecois-sur-gestion;Centre québécois sur la gestion de l’eau – CentrEau;;Régulier;;1065, avenue de la Médecine, Québec G1V 0A6;Québec;Québec;Canada;https://centreau.org/accueil/;info@centreau.org;418 656-7351
+SEREX;Corporation du service de recherche et d’expertise en transformation des produits forestiers (SEREX);SEREX;Régulier;;25, rue Armand-Sinclair, Amqui G5J 1K3;Amqui;Québec;Canada;http://www.serex.qc.ca/;;
+ETS;École de technologie supérieure;ETS;Régulier;Université;1100, rue Notre-Dame Ouest, Montréal H3C 1K3;Montréal;Québec;Canada;https://www.etsmtl.ca/;;
+EPAQ;École des pêches et de l’aquaculture du Québec;EPAQ;Régulier;Collège - CCTT;167, Grande-Allée Est, Grande-Rivière G0C 1V0;Grande-Rivière;Québec;Canada;http://www.epaq.qc.ca/;;418 385-2241
+federation-cegeps;Fédération des cégeps;;Régulier;;800, boulevard de Maisonneuve Est, Montréal H2L 4L8;Montréal;Québec;Canada;http://www.fedecegeps.qc.ca/;;514 381-8631
+Quebec-Ocean;Groupe interinstitutionnel de recherches océanographiques du Québec (Québec-Océan);Quebec-Ocean;Régulier;OBNL;1030, avenue des Sciences-de-la-Vie, Québec G1V 0A6;Québec;Québec;Canada;http://www.quebec-ocean.ulaval.ca/;;418 656-2131
+GRIL;Groupe de recherche interuniversitaire en limnologie et en environnement aquatique (GRIL);GRIL;Régulier;;2900, boulevard Édouard-Montpetit, Montréal H3T 1J4;Montréal;Québec;Canada;https://oraprdnt.uqtr.uquebec.ca/pls/public/gscw031?owa_no_site=1272;;
+GERAD;Groupe d’études et de recherche en analyse des décisions (GERAD);GERAD;Régulier;;2920, chemin de la Tour, Montréal H3T 1N8;Montréal;Québec;Canada;https://www.gerad.ca/fr;info@gerad.ca;514 340-6053
+HEC;HEC Montréal;;Régulier;Université;3000, chemin de la Côte-Sainte-Catherine, Montréal H3T 2A7;Montréal;Québec;Canada;http://www.hec.ca/;;514 340-6000
+Innofibre;Innofibre – Centre d’innovation des produits cellulosiques;;Régulier;;3351, boulevard des Forges, Trois-Rivières G9A 5E6;Trois-Rivières;Québec;Canada;http://innofibre.ca/#;;819 376-5075
+IMAR;Innovation maritime;IMAR;Régulier;Collège - CCTT;53, rue Saint-Germain Ouest, Rimouski G5L 4B4;Rimouski;Québec;Canada;https://www.innovationmaritime.ca/;;418 725-3525
+ISMER;Institut des sciences de la mer de Rimouski (ISMER);ISMER;Régulier;Université;310, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://www.ismer.ca/;;418 724-1650
+institut-vehicule-innovant;Institut du véhicule innovant;;Régulier;;100, rue Claude-Audy, Saint-Jérôme J5L 0J2;Saint-Jérôme;Québec;Canada;https://www.ivisolutions.ca/;;450 431-5744
+institut-international-logistique-quebec;Institut international de logistique du Québec;;Régulier;;8300, rue Saint-Patrick, LaSalle H8N 1V1;LaSalle;Québec;Canada;;;
+IMQ;Institut maritime du Québec;IMQ;Régulier;Collège - CCTT;53, rue Saint-Germain Ouest, Rimouski G5L 4B4;Rimouski;Québec;Canada;http://www.imq.qc.ca/;;418 835-1621
+INRS;Institut national de la recherche scientifique;INRS;Régulier;Université;490, rue de la Couronne, Québec G1K 9A9;Québec;Québec;Canada;http://www.inrs.ca/;;418 654-4677
+INAF;Institut sur la nutrition et les aliments fonctionnels (INAF);INAF;Régulier;Université;2440, boulevard Hochelaga, Québec G1V 0A6;Québec;Québec;Canada;http://www.inaf.ulaval.ca/;info@inaf.ulaval.ca;418 656-3527
+ITMI;Institut technologique de maintenance industrielle (ITMI);ITMI;Régulier;;175, rue de la Vérendrye, Sept-Îles G4R 5B7;Sept-Îles;Québec;Canada;http://www.itmi.ca/fr/accueil/;info@itmi.ca;418 962-9848
+KHEOPS;KHEOPS – Consortium international de recherche sur la gouvernance des grands projets d’infrastructure;;Régulier;Université;;Montréal;Québec;Canada;https://www.kheops.ca/;;
+Llio;Le Laboratoire en innovation ouverte (Llio);Llio;Régulier;Collège - CCTT;80, rue Frontenac, Rivière-du-Loup G5R 1R1;Rivière-du-Loup;Québec;Canada;https://llio.quebec/;info@llio.quebec;418 862-6903
+merinov;Merinov;;Régulier;Collège - CCTT;96, montée de Sandy Beach, Gaspé G4X 2V6;Gaspé;Québec;Canada;http://www.merinov.ca/;info@merinov.ca;418 368-6371
+oleotek;Oleotek;;Régulier;;835, rue Mooney Ouest, Thetford Mines;Thetford Mines;Québec;Canada;http://www.oleotek.org/;;
+PROTEO;PROTEO, le regroupement québécois de recherche sur la fonction, l’ingénierie et les applications des protéines;;Régulier;;201, avenue du Président-Kennedy, Montréal H2X 3Y7;Montréal;Québec;Canada;http://proteo.ca/;;
+Polytechnique;Polytechnique Montréal;;Régulier;Université;2500, chemin de Polytechnique, Montréal H3T 1J4;Montréal;Québec;Canada;http://www.polymtl.ca/;;
+RAQ;Ressources Aquatiques Québec (RAQ);RAQ;Régulier;OBNL;310, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://raq.uqar.ca/;;418 723-1986
+solutions-novika;Solutions Novika;;Régulier;Collège - CCTT;129, rue du Parc-de-l'Innovation, La Pocatière G0R 1Z0;La Pocatière;Québec;Canada;https://www.novika.ca/;;418 856-4350
+synchronex-reseau-cctt;Synchronex – Le réseau des CCTT;;Régulier;;979, avenue de Bourgogne, Québec G1W 2L4;Québec;Québec;Canada;https://synchronex.ca/;;
+TELUQ;Télé-Université;;Régulier;;455, rue du Parvis, Québec G1K 9H6;Québec;Québec;Canada;http://www.teluq.ca/;communications@teluq.ca;418 657-3695
+Bishops;Université Bishop’s;;Régulier;;2600, rue Collège, Sherbrooke J1M 1Z7;Sherbrooke (Lennoxville);Québec;Canada;http://www.ubishops.ca/fr/;;819 822-9600
+Concordia;Université Concordia;;Régulier;Université;1455, boulevard De Maisonneuve Ouest, Montréal H3G 1M8;Montréal;Québec;Canada;https://www.concordia.ca/fr.html;;514 848-2424
+UdeM;Université de Montréal;UdeM;Régulier;Université;2900, boulevard Édouard-Montpetit, Montréal H3T 1J4;Montréal;Québec;Canada;http://www.umontreal.ca/;;514 343-6111
+UdeS;Université de Sherbrooke;;Régulier;Université;2500, boulevard de l'Université, Sherbrooke J1K 2R1;Sherbrooke;Québec;Canada;https://www.usherbrooke.ca/;;819 821-8000
+UQ;Université du Québec;;Régulier;;475, rue du Parvis, Québec G1K 9H7;Québec;Québec;Canada;http://www.uquebec.ca/reseau/fr;communications@uquebec.ca;418 657-3551
+UQAC;Université du Québec à Chicoutimi;UQAC;Régulier;Université;555, boulevard de l'Université, Saguenay G7H 2B1;Saguenay (Chicoutimi);Québec;Canada;http://www.uqac.ca/;communications@uqac.ca;418 545-5011
+UQAM;Université du Québec à Montréal;UQAM;Régulier;Université;405, rue Sainte-Catherine Est, Montréal H2L 2C4;Montréal;Québec;Canada;http://www.uqam.ca/;;514 987-3000
+UQAR;Université du Québec à Rimouski;UQAR;Régulier;Université;300, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://www.uqar.ca/;communications@uqar.ca;418 723-1986
+UQTR;Université du Québec à Trois-Rivières;UQTR;Régulier;Université;3351, boulevard des Forges, Trois-Rivières G8Z 4M3;Trois-Rivières;Québec;Canada;http://www.uqtr.ca/;;819 376-5254
+UQAT;Université du Québec en Abitibi-Témiscamingue;;Régulier;;445, boulevard de l'Université, Rouyn-Noranda J9X 5E4;Rouyn-Noranda;Québec;Canada;http://www.uqat.ca/;information@uqat.ca;819 762-0971
+UQO;Université du Québec en Outaouais;UQO;Régulier;Université;283, boulevard Alexandre-Taché, Gatineau J9A 1L8;Gatineau;Québec;Canada;http://uqo.ca/;;
+ULaval;Université Laval;ULaval;Régulier;Université;2325, rue de l'Université, Québec G1V 0A6;Québec;Québec;Canada;https://www.ulaval.ca/;;418 656-2131
+McGill;Université McGill;;Régulier;Université;845, rue Sherbrooke Ouest, Montréal H3A 0G4;Montréal;Québec;Canada;https://www.mcgill.ca/fr;;514 398-3000
+armateurs-saint-laurent;Armateurs du Saint-Laurent;;Associé;;271, rue de l'Estuaire, Québec G1K 7P7;Québec;Québec;Canada;https://www.armateurs.ca/;info@armateurs.ca;418 648-4378
+attention-fragiles;Attention FragÎles;;Associé;OBNL;1536, chemin de l'Étang-du-Nord, Les Îles-de-la-Madeleine G4T 3Z8;Cap-aux-Meules;Québec;Canada;https://www.attentionfragiles.org/;info@attentionfragiles.org;418 986-6644
+biodome-montreal;Biodôme de Montréal;;Associé;;4777, avenue Pierre-De Coubertin, Montréal H1V 1B3;Montréal;Québec;Canada;https://espacepourlavie.ca/biodome;;
+CRBM;Centre de recherche sur les biotechnologies marines (CRBM);CRBM;Associé;;265, 2e Rue Est, Rimouski G5L 9H3;Rimouski;Québec;Canada;https://crbm.ca/;;418 723-2726
+CERMIM;Centre de recherche sur les milieux insulaires et maritimes (CERMIM);CERMIM;Associé;OBNL;98, chemin Principal, Cap-aux-Meules G4T 1C2;Îles-de-la-Madeleine;Québec;Canada;http://www.uqar.ca/recherche/la-recherche-a-l-uqar/unites-de-recherche/centre-de-recherche-sur-les-milieux-insulaires-et-maritimes-cermim/presentation-objectifs-et-mission-cermim;;418 969-2100
+CERSI;Centre d’éducation et de recherche de Sept-Îles (CERSI);CERSI;Associé;;;Sept-Îles;Québec;Canada;http://www.cersi.org/;;
+MDDELCC;Centre d’expertise en analyse environnementale du Québec du MDDELCC;MDDELCC;Associé;;2700, rue Einstein, Québec G1P 3W8;Québec;Québec;Canada;http://www.ceaeq.gouv.qc.ca/centre/index.htm;;
+DSP-BSL;Centre intégré de santé et de services sociaux du Bas-Saint-Laurent – Direction de la santé publique;;Associé;Provincial;288, rue Pierre-Saindon, Rimouski G5L 9A8;Rimouski;Québec;Canada;http://www.cisss-bsl.gouv.qc.ca/;;418 725-4540
+CIDCO;Centre Interdisciplinaire de développement en cartographie des océans (CIDCO);CIDCO;Associé;OBNL;115, rue Saint-Germain Ouest, Rimouski G5L 4B6;Rimouski;Québec;Canada;http://www.cidco.ca/;info@cidco.ca;418 725-1732
+CIRANO;Centre Interuniversitaire de Recherche en ANalyse des Organisations (CIRANO);CIRANO;Associé;;1130, rue Sherbrooke Ouest, Montréal H3A 2M8;Montréal;Québec;Canada;http://www.cirano.qc.ca/;;514 985-4000
+centre-pour-transport-maritime;Centre pour le transport maritime responsable – Clear Seas;;Associé;;355, Burrard Street, Vancouver, BC V6C 2G8;Vancouver;Colombie-Britannique;Canada;https://clearseas.org/fr/;;
+CGC;Commission géologique du Canada;CGC;Associé;Fédéral;601, Booth Street, Ottawa, ON K1A 0E8;Ottawa;Ontario;Canada;http://www.rncan.gc.ca/sciences-terre/sciences/geologie/cgc/17101;;
+WWF-Canada;Fonds mondial pour la nature (WWF-Canada);WWF-Canada;Associé;;410, Adelaide Street West, Toronto, ON M5V 1S8;Toronto;Ontario;Canada;https://wwf.ca/;;514 312-0514
+grand-conseil-nation-waban-aki;Grand Conseil de la Nation Waban-Aki;;Associé;Autochtone;10175, rue Kolipaïo, Wôlinak G0X 1B0;Bécancour (Wôlinak);Québec;Canada;https://gcnwa.com/;info@gcnwa.com;819 294-1686
+IRDA;Institut de recherche et de développement en agroenvironnement;;Associé;OBNL;2700, rue Einstein, Québec G1P 3W8;Québec;Québec;Canada;http://irda.qc.ca/;rh@irda.qc.ca;418 643-2380
+IML;Institut Maurice-Lamontagne, Pêches et Océans Canada;;Associé;;850, route de la Mer, Mont-Joli G5H 3Z4;Mont-Joli;Québec;Canada;https://navigator.innovation.ca/fr/facility/peches-et-oceans-canada/institut-maurice-lamontagne;;
+INSPQ;Institut national de santé publique du Québec (INSPQ);INSPQ;Associé;;945, avenue Wolfe, Québec G1V 5B3;Québec;Québec;Canada;https://www.inspq.qc.ca/;;
+INREST;Institut nordique de recherche en environnement et en santé au travail (INREST);INREST;Associé;OBNL;350, avenue Jolliet, Sept-Îles G4R 2B2;Sept-Îles;Québec;Canada;http://www.inrest.ca/;info@inrest.ca;
+IVADO;IVADO – Institut de valorisation des données;;Associé;;950, avenue Beaumont, Montréal H3N 1V5;Montréal;Québec;Canada;https://ivado.ca/;info@ivado.ca;
+MFFP;Ministère des Forêts, de la Faune et des Parcs;MFFP;Associé;Provincial;;Québec;Québec;Canada;https://mffp.gouv.qc.ca/la-faune/;;
+ouranos;Ouranos;;Associé;OBNL;550, rue Sherbrooke Ouest, Montréal H3A 1B9;Montréal;Québec;Canada;https://www.ouranos.ca/ouranos/;;514 282-6464
+reformar;Reformar Inc.;;Associé;Industriel;310, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://reformar.ca/;info@reformar.ca;418 723-1986
+transports-canada;Transports Canada;;Associé;Fédéral;330, Sparks Street, Ottawa, ON K1A 0N5;Ottawa;Ontario;Canada;https://www.tc.gc.ca/fr/transports-canada.html;;
+association-croisieres-saint-laurent;Association des croisières du Saint-Laurent;;Usager – Communautaire;;;Rimouski;Québec;Canada;http://www.cruisesaintlawrence.com/fr/index.aspx;;
+CAPSA;CAPSA – organisme des bassins versants;CAPSA;Usager – Communautaire;OBNL;111, route des Pionniers, Saint-Raymond G3L 2A8;Saint-Raymond;Québec;Canada;http://capsa-org.com/la-capsa/mission-et-mandat;accueil@capsa-org.com;418 337-1398
+comite-zip-sud-de-l-estuaire;Comité ZIP du Sud-de-l’Estuaire;;Usager – Communautaire;;202, rue Saint-Germain Ouest, Rimouski G5L 4B7;Rimouski;Québec;Canada;http://zipsud.org/;info@zipsud.org;418 722-8833
+conseil-eau-nord-gaspesie;Conseil de l’eau du Nord de la Gaspésie;;Usager – Communautaire;;15, 1re Avenue Ouest, Saint-Maxime-du-Mont-Louis G0E 1T0;Saint-Maxime-du-Mont-Louis;Québec;Canada;http://www.conseileaunordgaspesie.ca/;direction@conseileaunordgaspesie.ca;418 797-2602
+exploramer;Exploramer;;Usager – Communautaire;OBNL;1, rue du Quai, Sainte-Anne-des-Monts G4V 2B6;Sainte-Anne-des-Monts;Québec;Canada;http://www.exploramer.qc.ca/;info@exploramer.qc.ca;418 763-2500
+explos-nature;Explos-Nature;;Usager – Communautaire;;302, rue de la Rivière, Les Bergeronnes G0T 1G0;Les Bergeronnes;Québec;Canada;http://www.explosnature.ca/;;418 232-6249
+fondation-monique-fitz-back;Fondation Monique-Fitz-Back pour l’éducation au développement durable;;Usager – Communautaire;;511, rue Saint-Joseph Est, Québec G1K 3B7;Québec;Québec;Canada;http://www.fondationmf.ca/la-fondation/;;418 523-8585
+CargoM;Grappe Métropolitaine de logistique et transport de Montréal;;Usager – Communautaire;Industriel;2100, avenue Pierre-Dupuy, Montréal H3C 3R5;Montréal;Québec;Canada;http://www.cargo-montreal.ca/fr/qui-sommes-nous/grappe-de-logistique/;;514 508-2609
+IDDPNQL;Institut de développement durable des Premières Nations du Québec et du Labrador;;Usager – Communautaire;;174, rue Chef-Aimé-Romain, Wendake G0A 4V0;Wendake;Québec;Canada;https://iddpnql.ca/;info@iddpnql.ca;418 843-9999
+escale-maritime-trois-pistoles;L’Escale maritime de Trois-Pistoles;;Usager – Communautaire;;;Trois-Pistoles;Québec;Canada;https://escalemaritime.ca/;;
+musee-fjord;Musée du Fjord;;Usager – Communautaire;;3346, boulevard de la Grande-Baie Sud, Saguenay G7B 1G2;Saguenay (La Baie);Québec;Canada;http://www.museedufjord.com;;
+nautisme-quebec;Nautisme Québec;;Usager – Communautaire;;1750, boulevard Marie-Victorin, Longueuil J4G 1A5;Longueuil;Québec;Canada;http://www.nautismequebec.com/;;450 466-1777
+OGSL;Observatoire global du Saint-Laurent;OGSL;Usager – Communautaire;OBNL;133, rue Julien-Réhel, Rimouski G5L 9B1;Rimouski;Québec;Canada;https://ogsl.ca/fr/;;418 723-8372
+office-tourisme-congres-riviere-du-loup;Office du tourisme et des congrès de Rivière-du-Loup;;Usager – Communautaire;;189, boulevard de l'Hôtel-de-Ville, Rivière-du-Loup G5R 5C4;Rivière-du-Loup;Québec;Canada;http://www.tourismeriviereduloup.ca/;;
+OBV-Capitale;Organisme des bassins versants de la Capitale;;Usager – Communautaire;;870, avenue De Salaberry, Québec G1R 2T9;Québec;Québec;Canada;http://www.obvcapitale.org/;info@obvcapitale.org;418 780-7242
+ROBVQ;Regroupement des organismes de bassins versants du Québec;ROBVQ;Usager – Communautaire;OBNL;870, avenue De Salaberry, Québec G1R 2T9;Québec;Québec;Canada;https://robvq.qc.ca/;info@robvq.qc.ca;418 800-1144
+RMBMU;Réserve mondiale de la biosphère Manicouagan-Uapishka;;Usager – Communautaire;;31, avenue Marquette, Baie-Comeau G4Z 1K4;Baie-Comeau;Québec;Canada;https://rmbmu.com/;info@rmbmu.com;418 296-1517
+SHMP;Site historique maritime de la Pointe-au-Père;;Usager – Communautaire;;1000, rue du Phare, Rimouski G5M 1L8;Rimouski (Pointe-au-Père);Québec;Canada;http://shmp.qc.ca;info@shmp.qc.ca;418 724-6214
+strategies-saint-laurent;Stratégies Saint-Laurent;;Usager – Communautaire;OBNL;870, avenue De Salaberry, Québec G1R 2T9;Québec;Québec;Canada;http://www.strategiessl.qc.ca/;info@strategiessl.qc.ca;418 648-8079
+technoscience-est-du-quebec;Technoscience Est-du-Québec;;Usager – Communautaire;OBNL;84, rue Saint-Germain Est, Rimouski G5L 1A6;Rimouski;Québec;Canada;http://www.technoscience-eq.ca/;info@technoscience-eq.ca;418 723-5448
+administration-pilotage-laurentides;Administration de pilotage des Laurentides;;Usager – Gouvernemental;;999, boulevard De Maisonneuve Ouest, Montréal H3A 3L4;Montréal;Québec;Canada;https://www.pilotagestlaurent.gc.ca/;;514 283-6320
+CEGRIM;Centre d’expertise en gestion des risques d’incidents maritimes (CEGRIM);CEGRIM;Usager – Gouvernemental;Provincial;120, chemin de Gros-Cap, Les Îles-de-la-Madeleine G4T 1K8;Cap-aux-Meules;Québec;Canada;https://strategiemaritime.gouv.qc.ca/publications/le-quebec-se-dote-dun-centre-dexpertise-en-gestion-des-risques-dincidents-maritimes/;;
+centre-services-scolaire-phares;Centre de services scolaire des Phares;;Usager – Gouvernemental;;435, avenue Rouleau, Rimouski G5L 8V4;Rimouski;Québec;Canada;http://www.cssphares.gouv.qc.ca/;webmestre@cssphares.gouv.qc.ca;418 723-5927
+centre-services-scolaire-fleuve-et-des-lacs;Centre de services scolaire du Fleuve-et-des-Lacs;;Usager – Gouvernemental;;14, rue du Vieux-Chemin, Témiscouata-sur-le-Lac G0L 1E0;Témiscouata-sur-le-Lac;Québec;Canada;https://cssfl.gouv.qc.ca/;info@cssfl.gouv.qc.ca;418 854-2370
+centre-services-scolaire-moyenne-cote-nord;Centre de services scolaire Moyenne-Côte-Nord;;Usager – Gouvernemental;;1235, rue de la Digue, Havre-Saint-Pierre G0G 1P0;Havre-Saint-Pierre;Québec;Canada;http://www.csmcn.qc.ca/;info@csmcn.qc.ca;418 538-3044
+CISSS-Gaspesie;Centre intégré de santé et de services sociaux de la Gaspésie;;Usager – Gouvernemental;Provincial;215, boulevard de York Ouest, Gaspé G4X 2W2;Gaspé;Québec;Canada;https://www.cisss-gaspesie.gouv.qc.ca/;;418 368-3301
+ECCC-CCEI;Environnement et Changement climatique Canada, Centre Canadien des Eaux Intérieures;;Usager – Gouvernemental;;867, Lakeshore Road, Burlington, ON L7S 1A1;Burlington;Ontario;Canada;https://www.ec.gc.ca/scitech/default.asp?lang=Fr&n=0B9A6436-1;;
+fonds-recherche-quebec;Fonds de recherche du Québec;;Usager – Gouvernemental;Provincial;140, Grande Allée Est, Québec G1R 5M8;Québec;Québec;Canada;http://www.scientifique-en-chef.gouv.qc.ca/;;514 873-2114
+IDE-Trois-Rivieres;Innovation et Développement économique Trois-Rivières;;Usager – Gouvernemental;OBNL;1100, place du Technoparc, Trois-Rivières G9A 0A9;Trois-Rivières;Québec;Canada;http://www.idetr.com;info@idetr.com;819 374-4061
+municipalite-saint-andre;Municipalité de Saint-André;;Usager – Gouvernemental;Municipal;122A, rue Principale, Saint-André-de-Kamouraska G0L 2H0;Saint-André-de-Kamouraska;Québec;Canada;http://www.standredekamouraska.ca/;direction@standredekamouraska.ca;418 493-2085
+municipalite-sainte-luce;Municipalité de Sainte-Luce;;Usager – Gouvernemental;;1, rue Langlois, Sainte-Luce G0K 1P0;Sainte-Luce;Québec;Canada;http://sainteluce.ca;;
+municipalite-regionale-comte-kamouraska;Municipalité régionale de comté de Kamouraska;;Usager – Gouvernemental;;235, rue Rochette, Saint-Pascal G0L 3Y0;Saint-Pascal;Québec;Canada;https://www.mrckamouraska.com/;accueil@mrckamouraska.com;418 492-1660
+parc-national-iles-de-boucherville;Parc national des Iles-de-Boucherville;;Usager – Gouvernemental;;55, Île Sainte-Marguerite, Boucherville J4B 5J6;Boucherville;Québec;Canada;http://www.sepaq.com/pq/bou/;;
+parc-national-bic;Parc national du Bic;;Usager – Gouvernemental;Provincial;3382, route 132 Ouest, Rimouski G0L 1B0;Rimouski (Le Bic);Québec;Canada;https://www.sepaq.com/pq/bic/;;
+societe-parc-industriel-portuaire;Société du parc industriel et portuaire de Bécancour;;Usager – Gouvernemental;;1000, boulevard Arthur-Sicard, Bécancour G9H 2Z8;Bécancour;Québec;Canada;http://www.SPIPB.com;info@spipb.com;819 294-6656
+ville-beaupre;Ville de Beaupré;;Usager – Gouvernemental;;10995, rue des Montagnards, Beaupré G0A 1E0;Beaupré;Québec;Canada;https://www.villedebeaupre.com/;;
+ville-quebec;Ville de Québec;;Usager – Gouvernemental;Municipal;2, rue des Jardins, Québec G1R 4S9;Québec;Québec;Canada;https://www.ville.quebec.qc.ca/;;418 641-6311
+ville-rimouski;Ville de Rimouski;;Usager – Gouvernemental;;205, avenue de la Cathédrale, Rimouski;Rimouski;Québec;Canada;http://www.ville.rimouski.qc.ca/#ad-image-0;;418 723-3313
+ville-riviere-du-loup;Ville de Rivière-du-Loup;;Usager – Gouvernemental;;65, rue de l'Hôtel-de-Ville, Rivière-du-Loup G5R 3Y7;Rivière-du-Loup;Québec;Canada;http://www.villerdl.ca/fr;;418 867-6717
+ville-sept-iles;Ville de Sept-Îles;;Usager – Gouvernemental;Municipal;546, avenue De Quen, Sept-Îles G4R 2R4;Sept-Îles;Québec;Canada;http://www.ville.sept-iles.qc.ca/;;
+ville-trois-pistoles;Ville de Trois-Pistoles;;Usager – Gouvernemental;;495, rue Notre-Dame Ouest, Trois-Pistoles G0L 4K0;Trois-Pistoles;Québec;Canada;https://www.ville-trois-pistoles.ca/;;
+ville-varennes;Ville de Varennes;;Usager – Gouvernemental;;175, rue Sainte-Anne, Varennes J3X 1T5;Varennes;Québec;Canada;https://www.ville.varennes.qc.ca/;communication@ville.varennes.qc.ca;450 652-9888
+administration-portuaire-montreal;Administration portuaire de Montréal;;Usager – Industriel;Industriel;2100, avenue Pierre-Dupuy, Montréal H3C 3R5;Montréal;Québec;Canada;https://www.port-montreal.com/fr/le-port-de-montreal/le-port/structure-et-gouvernance;;
+administration-portuaire-quebec;Administration portuaire de Québec;;Usager – Industriel;Industriel;150, rue Dalhousie, Québec;Québec;Québec;Canada;http://www.portquebec.ca/;;418 648-3640
+administration-portuaire-sept-iles;Administration portuaire de Sept-Îles;;Usager – Industriel;Industriel;1, quai Mgr-Blanche, Sept-Îles G4R 5P3;Sept-Îles;Québec;Canada;http://www.portsi.com/;communications@portsi.com;418 962-8588
+administration-portuaire-trois-rivieres;Administration portuaire de Trois-Rivières;;Usager – Industriel;Industriel;1545, rue du Fleuve, Trois-Rivières G9A 6K4;Trois-Rivières;Québec;Canada;https://www.porttr.com/;;819 378-2887
+administration-portuaire-saguenay;Administration portuaire du Saguenay;;Usager – Industriel;Industriel;6600, chemin du Quai-Marcel-Dionne, Saguenay G7B 3N9;Saguenay;Québec;Canada;https://portsaguenay.ca/fr/page/administration-portuaire-du-saguenay;;418 697-0250
+alliance-verte;Alliance verte;;Usager – Industriel;OBNL;25, rue du Marché-Champlain, Québec G1K 4H2;Québec;Québec;Canada;https://allianceverte.org/;info@allianceverte.org;418 649-6004
+association-employeurs-maritimes;Association des employeurs maritimes;;Usager – Industriel;;2100, avenue Pierre-Dupuy, Montréal H3C 3R5;Montréal;Québec;Canada;http://www.mea.ca/;;514 878-3721
+comite-sectoriel-main-d-oeuvre;Comité sectoriel de main-d’oeuvre de l’industrie maritime;;Usager – Industriel;OBNL;271, rue de l'Estuaire, Québec G1K 8S8;Québec;Québec;Canada;http://www.csmoim.qc.ca/;;418 694-9059
+croisieres-aml;Croisières AML;;Usager – Industriel;Industriel;124, rue Saint-Pierre, Québec G1K 4A7;Québec;Québec;Canada;http://www.croisieresaml.com/;;
+fednav-limitee;Fednav limitée;;Usager – Industriel;;1000, rue De La Gauchetière Ouest, Montréal H3B 4W5;Montréal;Québec;Canada;https://www.fednav.com/fr;;514 878-6500
+groupe-csl;Groupe CSL Inc;;Usager – Industriel;;759, Square Victoria, Montréal H2Y 2K3;Montréal;Québec;Canada;https://www.cslships.com/fr;;514 982-3800
+groupe-desgagnes;Groupe Desgagnés;;Usager – Industriel;Industriel;21, rue du Marché-Champlain, Québec G1K 8Z8;Québec;Québec;Canada;https://groupedesgagnes.com/;;450 635-0833
+groupe-somavrac;Groupe Somavrac inc.;;Usager – Industriel;;;Trois-Rivières;Québec;Canada;http://www.groupesomavrac.com;;
+corporation-gestion-port-baie-comeau;La Corporation de gestion du port de Baie-Comeau;;Usager – Industriel;;20, avenue Cartier, Baie-Comeau G4Z 0B5;Baie-Comeau;Québec;Canada;https://www.portbcomeau.ca/;info@portbcomeau.ca;418 298-2580
+lasalle-nhc;Lasalle | NHC;;Usager – Industriel;;9620, rue Saint-Patrick, Montréal H8R 1R8;Montréal;Québec;Canada;http://www.lablasalle.com;;
+port-havre-saint-pierre;Port de Havre-Saint-Pierre;;Usager – Industriel;;1010, promenade des Anciens, Havre-Saint-Pierre G0G 1P0;Havre-Saint-Pierre;Québec;Canada;https://www.porthsp.ca/;;418 538-1520
+Sodes;Société de développement économique du Saint-Laurent;Sodes;Usager – Industriel;;271, rue de l'Estuaire, Québec G1K 8S8;Québec;Québec;Canada;http://www.st-laurent.org/;;514 878-2332
+STQ;Société des traversiers du Québec;STQ;Usager – Industriel;Provincial;250, rue Saint-Paul, Québec G1K 9K9;Québec;Québec;Canada;https://www.traversiers.com/;;418 898-2843
+technopole-maritime-quebec;Technopole maritime du Québec;;Usager – Industriel;;;Rimouski;Québec;Canada;https://tmq.ca/;;
+acpg-innovation;ACPG Innovation;;Associé;;1-1, rue de la Mary, Gaspé G4X 5E9;Rivière-au-Renard;Québec;Canada;https://www.acpgaspesie.com/;;418 269-7701
+aecom-consultants;AECOM Consultants Inc.;;Associé;;85, rue Sainte-Catherine Ouest, Montréal H2X 3P4;Montréal;Québec;Canada;https://www.aecom.com/ca/fr/;;
+agence-mamu-innu-kaikusseht;Agence Mamu Innu Kaikusseht;;Associé;;279, boulevard des Montagnais, Sept-Îles G4R 5R1;Sept-Îles;Québec;Canada;http://l-amik.ca/;;418 962-0103
+aquasearch;AQUASEARCH;;Associé;Industriel;;Montpellier;;France;https://www.aquasearch.fr/;contact@aquasearch.fr;
+AGHAMM;Association de gestion halieutique autochtone Mi’gmaq et Malécite (AGHAMM);AGHAMM;Associé;OBNL;10, boulevard Perron, Gesgapegiag G0C 1Y1;Gesgapegiag;Québec;Canada;http://www.aghamm.ca/;;418 759-1552
+centre-expertise-logistique-portuaire;Centre d’expertise en logistique portuaire;;Associé;OBNL;1545, rue du Fleuve, Trois-Rivières G9A 6K4;Trois-Rivières;Québec;Canada;https://centrexlp.com/;info@centrexlp.com;819 996-1064
+co2-solutions;CO2 Solutions;;Associé;Industriel;;Québec;Québec;Canada;;;
+conseil-international-cmi-imc-international;Conseil International CMI-IMC International Council;;Associé;;;Saguenay;Québec;Canada;https://cmi-imc.org/;;
+comite-permanent-sur-securite;Comité permanent sur la sécurité des bateaux de pêche du Québec;;Associé;Provincial;;Gaspé;Québec;Canada;;;
+insileco;inSileco Inc.;;Associé;;;Québec;Québec;Canada;https://insileco.io/fr/;;
+IRHMAS;Institut de recherche en histoire maritime et archéologie subaquatique;IRHMAS;Associé;OBNL;;Québec;Québec;Canada;;;
+laboratoires-is0-biokem;Laboratoires Is0-BioKem inc.;;Associé;Industriel;300, allée des Ursulines, Rimouski G5L 3A1;Rimouski;Québec;Canada;http://isobiokem.ca/;contact@isobiokem.ca;581 624-8585
+m-expertise-marine;M – Expertise Marine;;Associé;Industriel;;Sainte-Luce;Québec;Canada;http://www.m-expertisemarine.com/;;418 750-5685
+observatoire-requins-saint-laurent;Observatoire des requins du Saint-Laurent;;Associé;;;Drummondville;Québec;Canada;https://geerg.ca/;;
+ocean-marine;Océan Marine;;Associé;;79, rue Commerciale Ouest, Chandler G0C 1K0;Chandler;Québec;Canada;http://oceanmarine.ca/;;514 686-2535
+poly-mer;POLY-MER;;Associé;;;Montréal;Québec;Canada;https://www.poly-mer.org/;;
+samuel-c-fortin-pharma;Samuel C. Fortin Pharma Inc.;;Associé;Industriel;;Sainte-Luce;Québec;Canada;http://www.scfpharma.com/?lang=fr;;418 750-8590
+sensea-canada;Sensea Canada inc.;;Associé;;;Rimouski;Québec;Canada;;;
+solution-sorarisk;Solution SoraRisk inc.;;Associé;;;Montréal;Québec;Canada;https://www.sorarisk.ca/;info@sorarisk.ca;
+villes-regions-innovantes-reseau;Villes et Régions Innovantes, Réseau de l’économie circulaire;;Associé;;;Rimouski;Québec;Canada;http://regionsetvillesinnovantes.com/;;
+wsp-canada;WSP Canada;;Associé;;1600, boulevard René-Lévesque Ouest, Montréal H3H 1P9;Montréal;Québec;Canada;http://www.wsp-pb.com/fr/WSP-Canada/;;
+comite-zip-cote-nord-golfe;Comité ZIP Côte-Nord du Golfe;;Usager – Communautaire;OBNL;406, avenue Arnaud, Sept-Îles G4R 3A9;Sept-Îles;Québec;Canada;https://www.zipcng.org/;info@zipcng.org;418 968-8798
+comite-zip-rive-nord;Comité ZIP de la Rive Nord de l’Estuaire;;Usager – Communautaire;OBNL;810, rue Bossé, Baie-Comeau G5C 1L6;Baie-Comeau;Québec;Canada;https://www.zipnord.qc.ca/;communication@zipnord.qc.ca;418 296-0404
+comite-zip-iles-de-la-madeleine;Comité ZIP des Îles-de-la-Madeleine;;Usager – Communautaire;OBNL;330, chemin Principal, Cap-aux-Meules G4T 1C9;Cap-aux-Meules;Québec;Canada;http://www.zipnord.qc.ca/;communication@zipnord.qc.ca;418 296-0404
+comite-zip-seigneuries;Comité ZIP des Seigneuries;;Usager – Communautaire;OBNL;1095, rue Notre-Dame, Saint-Sulpice J5W 4L9;Saint-Sulpice;Québec;Canada;https://zipseigneuries.com/;;450 713-0887
+comite-zip-haut-saint-laurent;Comité ZIP du Haut Saint-Laurent;;Usager – Communautaire;OBNL;222, rue Alphonse-Desjardins, Salaberry-de-Valleyfield J6S 2N9;Salaberry-de-Valleyfield;Québec;Canada;https://www.ziphsl.org/;dg@ziphsl.org;450 371-2492
+comite-zip-lac-saint-pierre;Comité ZIP du lac Saint-Pierre;;Usager – Communautaire;OBNL;471, avenue Gilles-Villeneuve, Berthierville J0K 1A0;Berthierville;Québec;Canada;https://comiteziplsp.org/;;
+comite-zip-jacques-cartier;Comité ZIP Jacques-Cartier;;Usager – Communautaire;OBNL;14115, rue Prince-Arthur Est, Montréal H1A 1A8;Montréal;Québec;Canada;https://www.zipjc.org/fr/;info@zipjc.org;514 527-9262
+comite-zip-deux-rives;Comité ZIP Les Deux Rives;;Usager – Communautaire;OBNL;3930, rue Louis-Pinard, Trois-Rivières G8Y 4L9;Trois-Rivières;Québec;Canada;http://www.zip2r.org/;administration@zip2r.org;819 375-8699
+comite-zip-saguenay-charlevoix;Comité ZIP Saguenay-Charlevoix;;Usager – Communautaire;OBNL;260, rue Racine Est, Saguenay G7H 1R9;Saguenay;Québec;Canada;http://zipsaguenaycharlevoix.ca/;;418 690-9920
+corporation-reserve-biosphere-charlevoix;Corporation de la Réserve de Biosphère de Charlevoix;;Usager – Communautaire;;63, rue Ambroise-Fafard, Baie-Saint-Paul G3Z 2J7;Baie-Saint-Paul;Québec;Canada;http://www.biospherecharlevoix.org/;info@biospherecharlevoix.org;418 617-9386
+fleuve-espace-danse;Fleuve | Espace danse;;Usager – Communautaire;;318, rue Verreault, Saint-Jean-Port-Joli G0R 3G0;Saint-Jean-Port-Joli;Québec;Canada;https://fleuve-espacedanse.com/;;418 291-6985
+mission-1000-tonnes;Mission 1000 Tonnes;;Usager – Communautaire;;;Montréal;Québec;Canada;http://www.mission1000tonnes.com;info@mission1000tonnes.com;514 705-0682
+organisation-bleue;Organisation Bleue;;Usager – Communautaire;OBNL;;Montréal;Québec;Canada;https://www.organisationbleue.org/;;
+organisme-bassins-versants-cote-du-sud;Organisme des bassins versants de la Côte-du-Sud;;Usager – Communautaire;OBNL;6, rue Saint-Jean-Baptiste Est, Montmagny G5V 1J7;Montmagny;Québec;Canada;http://obvcotedusud.org/;direction@obvcotedusud.org;418 248-4566
+pascale-faubert-creations-textiles;Pascale Faubert Créations Textiles;;Usager – Communautaire;;;Rimouski;Québec;Canada;https://pascalefaubert.com/;info@pascalefaubert.com;418 768-6145
+regroupement-pecheurs-professionnels-sud;Regroupement des pêcheurs professionnels du sud de la Gaspésie;;Usager – Communautaire;Industriel;201, rue Commerciale Ouest, Chandler G0C 1K0;Chandler;Québec;Canada;http://monhomard.ca/;;418 689-5055
+ROMM;Réseau d’observation de mammifères marins;ROMM;Usager – Communautaire;OBNL;187, rue Bernier, Rivière-du-Loup G5R 0P3;Rivière-du-Loup;Québec;Canada;http://www.romm.ca/;;
+societe-parc-cotier-kiskotuk;Société du parc côtier Kiskotuk;;Usager – Communautaire;;200, chemin de la Rivière-des-Vases, Cacouna G0L 1G0;Cacouna;Québec;Canada;http://www.parcbasstlaurent.com/kiskotuk/accueil/;;418 867-8882
+CISSS-Chaudiere-Appalaches;Centre intégré de santé et de services sociaux de Chaudière-Appalaches;;Usager – Gouvernemental;Provincial;1205, boulevard Guillaume-Couture, Lévis G6W 0J6;Saint-Romuald;Québec;Canada;http://www.cisss-ca.gouv.qc.ca/;;
+parc-marin-saguenay;Parc marin du Saguenay-Saint-Laurent / Sépaq;;Usager – Gouvernemental;Provincial;182, rue de l'Église, Tadoussac G0T 2A0;Tadoussac;Québec;Canada;http://parcmarin.qc.ca/;;418 235-4703
+aligo-innovation;Aligo Innovation;;Usager – Industriel;;;Montréal;Québec;Canada;http://www.aligo.ca/;;
+alliance-pecheurs-professionnels-quebec;Alliance des pêcheurs professionnels du Québec;;Usager – Industriel;;;Gaspé;Québec;Canada;http://www.fishharvesterspecheurs.ca/fr/a-propos/conseil-administration/mario-deraspe;;
+alliance-eco-baleine;Alliance Éco-Baleine;;Usager – Industriel;;;Tadoussac;Québec;Canada;http://www.eco-baleine.ca/;;
+association-aquaculteurs-quebec;Association des Aquaculteurs du Québec;;Usager – Industriel;;555, boulevard Roland-Therrien, Longueuil J4H 3Y9;Longueuil;Québec;Canada;https://www.pisciculturequebec.com;;
+association-capitaines-proprietaires-gaspesie;Association des capitaines propriétaires de la Gaspésie – Innovation;;Usager – Industriel;;1-1, rue de la Mary, Gaspé G4X 5E9;Rivière-au-Renard;Québec;Canada;https://acpgaspesie.com/acpg-innovation/;;819 431-3615
+APPIM;Association des pêcheurs propriétaires des Îles-de-la-Madeleine;;Usager – Industriel;;;Cap-aux-Meules;Québec;Canada;http://www.homardsdesilesdelamadeleine.com/;;
+centre-simulation-expertise-maritime;Centre de simulation et d’expertise maritime;;Usager – Industriel;;271, rue de l'Estuaire, Québec G1K 8S8;Québec;Québec;Canada;;;
+croisieres-navark;Croisières NAVARK;;Usager – Industriel;;81, chemin de la Rive, Longueuil J4H 4C9;Longueuil;Québec;Canada;http://www.navark.ca/;;
+expension-strategies;Expension Strategies inc.;;Usager – Industriel;;;Montréal;Québec;Canada;https://www.expansionstrategies.ca/;;514 274-2641
+fermes-marines-quebec;Fermes marines du Québec inc.;;Usager – Industriel;;;Newport;Québec;Canada;http://fermesmarines.com/site/;;
+gc-aventures;G.C. Aventures;;Usager – Industriel;Industriel;;Contrecœur;Québec;Canada;;;
+greenfield-global-quebec;Greenfield Global Québec inc.;;Usager – Industriel;Industriel;3300, route Marie-Victorin, Varennes;Varennes;Québec;Canada;http://www.greenfield.com;;
+groupe-exploraterra-group;Groupe Exploraterra Group inc;;Usager – Industriel;;;Québec;Québec;Canada;http://www.exploraterra.com/index.cfm?l=FR;;
+idsma-2dis;IDSMA-2DIS inc.;;Usager – Industriel;;4928, rue Ambroise-Lafortune, Boisbriand J7H 1S6;Boisbriand;Québec;Canada;https://idsma2dis.com/;;
+innovactiv;InnoVactiv Inc;;Usager – Industriel;Industriel;120, montée Industrielle-et-Commerciale, Rimouski G5M 1B1;Rimouski;Québec;Canada;http://innovactiv.com/;info@innovactiv.com;418 721-2308
+innovmarine;InnovMarine Inc.;;Usager – Industriel;;743, rue des Chalutiers, Lévis G6V 9P5;Lévis;Québec;Canada;https://www.innovmarine.com/;;418 838-3553
+mobilite-electrique-canada-electric;Mobilité Électrique Canada / Electric Mobility Canada;;Usager – Industriel;;38, place du Commerce, Montréal H3E 1T8;Ile des Sœurs;Québec;Canada;http://emc-mec.ca;info@emc-mec.ca;514 787-2757
+ocean-saveurs;Océan de Saveurs Inc.;;Usager – Industriel;Industriel;;Gaspé;Québec;Canada;https://oceandesaveurs.ca/;info@oceandesaveurs.ca;
+opdaq-systemes;OpDAQ Systèmes;;Usager – Industriel;Industriel;352, rue Alcide-C.-Horth, Rimouski;Rimouski;Québec;Canada;http://www.opdaq.com/;;418 724-5835
+pecheries-guy-leblanc;Pêcheries Guy Leblanc Inc;;Usager – Industriel;;;Cap-aux-Meules;Québec;Canada;https://www.infobel.com/fr/canada/pecherie_guy_leblanc_inc/carleton_sur_mer/CA101573011-4183647542/businessdetails.aspx;;
+rassemblement-pecheurs-pecheuses-cotes;Rassemblement des pêcheurs et pêcheuses des côtes des Iles;;Usager – Industriel;;330, chemin Principal, Cap-aux-Meules G4T 1C9;Cap-aux-Meules;Québec;Canada;;;
+scadalliance-corporation;Scadalliance Corporation;;Usager – Industriel;;6855, avenue de l'Épée, Montréal H3N 2C7;Montréal;Québec;Canada;https://scadalliance.com;;514 448-4422
+societe-portuaire-bas-saint-laurent-gaspesie;Société portuaire du Bas-Saint-Laurent et de la Gaspésie;;Usager – Industriel;;603, avenue Saint-Jérôme, Matane G4W 3N1;Matane;Québec;Canada;https://spbsg.com/;info@spbsg.com;418 562-7094
+administration-pilotage-saint-laurent;Administration Pilotage Saint-Laurent;;;Industriel;;Montréal;;Canada;;;
+ARK;Administration Régionale Kativik (ARK);ARK;;Provincial;;Kuujjuaq;;Canada;;;
+air-met-science;Air Met Science;;;Industriel;;;;Canada;;;
+american-bureau-shipping;American Bureau of Shipping;;;Fédéral;;Spring;;États-Unis;;;
+amundsen-science;Amundsen Science;;;Industriel;;Québec;;Canada;;;
+anderson-cabot-center-for;Anderson Cabot Center for Ocean Life (New England Aquarium);;;OBNL;;Boston;;États-Unis;;;
+artiste-independant;Artiste indépendant;;;Industriel;;;;Canada;;;
+association-crabiers-gaspesiens;Association des Crabiers Gaspésiens;;;OBNL;;Port-Daniel–Gascons;;Canada;;;
+atelier-culinaire-p-o-ferry;Atelier culinaire P-O Ferry;;;Industriel;;;;Canada;;;
+avantis-cooperative;Avantis Coopérative;;;Industriel;;Sainte-Marie;;Canada;;;
+biome-sc;Biome SC;;;Industriel;;;;Canada;;;
+brock-university;Brock University;;;Université;;St. Catharines;Ontario;Canada;;;
+bureau-securite-transports;Bureau de la sécurité des transports;;;Fédéral;;Gatineau;;Canada;;;
+carl-paquet-agronome;Carl Paquet, agronome inc.;;;Industriel;;Saint-Lambert-de-Lauzon;;Canada;;;
+CNRS;Centre National de Recherche Scientifique (CNRS);CNRS;;Université;;Paris;;France;;;
+centre-medecine-plongee-quebec;Centre de médecine de plongée du Québec;;;OBNL;;Lévis;;Canada;;;
+CRITAC;Centre de recherche, d'innovation et de transfert en arts du cirque (CRITAC);CRITAC;;Collège - CCTT;;Montréal;;Canada;;;
+CIMMI;Centre en imagerie numérique et médias interactifs (CIMMI);CIMMI;;Collège - CCTT;;Québec;;Canada;;;
+CISSS-BSL;Centre intégré de santé et de services sociaux du Bas-Saint-Laurent;;;Provincial;;Rimouski;;Canada;;;
+cheffe-culinaire;Cheffe culinaire;;;Industriel;;;;Canada;;;
+chez-st-pierre;Chez St-Pierre;;;Industriel;;Rimouski;;Canada;;;
+civil-tracker;Civil Tracker;;;Industriel;;;;Canada;;;
+clarkson-university;Clarkson University;;;Université;;Potsdam;;États-Unis;;;
+collectivite-territoriale-saint-pierre-et-miquelon;Collectivité territoriale de Saint-Pierre-et-Miquelon;;;Municipal;;Saint-Pierre;;France;;;
+colorado-state-university;Colorado State University;;;Université;;Fort Collins;;États-Unis;;;
+CNESST;Commission des normes, de l’équité, de la santé et de la sécurité du travail (CNESST);CNESST;;;;Québec;;Canada;;;
+communagir;Communagir;;;Industriel;;Montréal;;Canada;;;
+communaute-metropolitaine-quebec;Communauté métropolitaine de Québec;;;Municipal;;Québec;;Canada;;;
+compagnies-assurance;Compagnies d'assurance;;;Industriel;;;;Canada;;;
+conseil-eau-gaspesie-sud;Conseil de l'eau Gaspésie Sud;;;OBNL;;Bonaventure;;Canada;;;
+conseil-nation-huronne-wendat;Conseil de la Nation Huronne-Wendat;;;Autochtone;;Wendake;;Canada;;;
+CRSNG;Conseil de recherches en sciences naturelles et en génie du Canada (CRSNG);CRSNG;;Fédéral;;Ottawa;;Canada;;;
+CNC;Conservation de la nature Canada (CNC);CNC;;Fédéral;;Toronto;;Canada;;;
+coop-mille-lieux;Coop Mille-Lieux;;;OBNL;;;;Canada;;;
+CPSLC;Corporation des pilotes du Saint-Laurent central (CPSLC);CPSLC;;Industriel;;Montréal;;Canada;;;
+cote-est;Côté-Est;;;Industriel;;Kamouraska;;Canada;;;
+doorspec-systeme;DOORSpec Système;;;Industriel;;La Prairie;;Canada;;;
+dalhousie-university;Dalhousie University;;;Université;;Halifax;;Canada;;;
+DIMAQ;Direction de l'information sur les milieux aquatiques (DIMAQ);DIMAQ;;Provincial;;Québec;;Canada;;;
+direction-sante-publique-gaspesie;Direction de santé publique Gaspésie et Îles-de-la-Madeleine;;;Provincial;;Gaspé;;Canada;;;
+eco-canada;Eco-Canada;;;OBNL;;Calgary;;Canada;;;
+ECCC;Environnement et Changement climatique Canada (ECCC);ECCC;;Fédéral;;Gatineau;;Canada;;;
+ferme-il-esperee-enr;Ferme IL'Espérée Enr.;;;Industriel;;;;Canada;;;
+ferme-jac-mi-senc;Ferme Jac Mi senc;;;Industriel;;Saint-Damase;;Canada;;;
+ferme-jeanniestar;Ferme Jeanniestar Inc.;;;Industriel;;Saint-Charles-de-Bellechasse;;Canada;;;
+ferme-lamontagne;Ferme Lamontagne;;;Industriel;;;;Canada;;;
+ferme-r-m-mercier;Ferme R. & M. Mercier INC.;;;Industriel;;Saint-Charles-de-Bellechasse;;Canada;;;
+ferme-porcine-marnie-senc;Ferme porcine Marnie senc;;;Industriel;;Saint-Charles-de-Bellechasse;;Canada;;;
+francdoc;FrancDoc;;;Industriel;;;;Canada;;;
+FQAS;Fédération québécoise des activités subaquatiques (FQAS);FQAS;;OBNL;;Montréal;;Canada;;;
+garde-cotiere-canadienne;Garde côtière canadienne;;;Fédéral;;Ottawa;;Canada;;;
+geomar-kiel;Geomar, Kiel;;;Industriel;;Kiel;;Allemagne;;;
+GMF;Global Maritime Forum (GMF);GMF;;OBNL;;Copenhague;;Canada;;;
+gourmande-nature;Gourmande de nature;;;Industriel;;Gaspé;;Canada;;;
+groupe-ocean;Groupe Océan;;;Industriel;;Québec;;Canada;;;
+GREMM;Groupe de recherche et d'éducation sur les mammifères marins (GREMM);GREMM;;OBNL;;Tadoussac;;Canada;;;
+genome-quebec;Génome Québec;;;Industriel;;Montréal;;Canada;;;
+geomatheque;Géomathèque;;;Industriel;;;;Canada;;;
+humoriste-vulgarisateur;Humoriste et vulgarisateur;;;Industriel;;;;Canada;;;
+industrie-mytillicole-ile-du-prince-edouard;Industrie mytillicole de l'Île-du-Prince-Édouard;;;Industriel;;;;Canada;;;
+ISDE;Innovation, Sciences et Développement économique Canada (ISDE);ISDE;;Fédéral;;Ottawa;;Canada;;;
+IRSST;Institut de recherche Robert-Sauvé en santé et en sécurité du travail (IRSST);IRSST;;OBNL;;Montréal;;Canada;;;
+Ifremer;Institut français de recherche pour l'exploitation de la mer (Ifremer);Ifremer;;Fédéral;;Plouzané;;France;;;
+INRAE;Institut national de recherche pour l’agriculture, l’alimentation et l’environnement (INRAE);INRAE;;Industriel;;Paris;;France;;;
+james-cook-university;James Cook University;;;Université;;Townsville;;Australie;;;
+journaliste;Journaliste;;;Industriel;;;;Canada;;;
+journaliste-independante;Journaliste indépendante;;;Industriel;;;;Canada;;;
+kongsberg;Kongsberg;;;Industriel;;Kongsberg;;Canada;;;
+academie;L'Académie;;;Industriel;;;;Canada;;;
+idylle-arts-vivants;L'idylle - arts vivants;;;OBNL;;Montréal;;Canada;;;
+base-agece-communication;La base - agece de communication;;;Industriel;;;;Canada;;;
+LDGIZC;Laboratoire de dynamique et de gestion intégrée des zones côtières (LDGIZC);LDGIZC;;OBNL;;Rimouski;;Canada;;;
+LOJIQ;Les Offices jeunesse internationaux du Québec (LOJIQ);LOJIQ;;OBNL;;Montréal;;Canada;;;
+makivik;MAKIVIK;;;OBNL;;Kuujjuaq;;Canada;;;
+mitacs;MITACS;;;OBNL;;Vancouver;;Canada;;;
+mrc-bellechasse;MRC de Bellechasse;;;Municipal;;Saint-Lazare-de-Bellechasse;;Canada;;;
+mrc-bonaventure;MRC de Bonaventure;;;Municipal;;New Carlisle;;Canada;;;
+mrc-kamouraska;MRC de Kamouraska;;;Municipal;;Saint-Pascal;;Canada;;;
+mrc-riviere-du-loup;MRC de Rivière-du-Loup;;;Municipal;;Rivière-du-Loup;;Canada;;;
+mte-instruments;MTE Instruments;;;Industriel;;Rimouski;;Canada;;;
+memorial-university;Memorial University;;;Université;;St. John's;;Canada;;;
+MAPAQ;Ministère de l'Agriculture, des Pêcheries et de l'Alimentation (MAPAQ);MAPAQ;;Provincial;;Québec;;Canada;;;
+MELCC;Ministère de l'Environnement et de la Lutte contre les changements climatiques (MELCC);MELCC;;Provincial;;Québec;;Canada;;;
+MELCCFP;Ministère de l'Environnement, de la Lutte contre les changements climatiques, de la Faune et des Parcs (MELCCFP);MELCCFP;;Provincial;;Québec;;Canada;;;
+ministere-culture-communications;Ministère de la culture et des communications;;;Provincial;;Québec;;Canada;;;
+MTQ;Ministère des Transports du Québec (MTQ);MTQ;;Provincial;;Québec;;Canada;;;
+miraviation;MirAviation Inc.;;;Industriel;;;;Canada;;;
+mohawk-concil-kahnawake;Mohawk Concil Kahnawake;;;Autochtone;;Kahnawake;;Canada;;;
+multi-electronique;Multi-électronique;;;Industriel;;Rimouski;;Canada;;;
+municipalite-cap-chat;Municipalité de Cap-Chat;;;Municipal;;Cap-Chat;;Canada;;;
+municipalite-riviere-du-loup;Municipalité de Rivière-du-Loup;;;Municipal;;Rivière-du-Loup;;Canada;;;
+municipalite-sainte-therese-de-gaspe;Municipalité de Sainte-Thérèse-de-Gaspé;;;Municipal;;Sainte-Thérèse-de-Gaspé;;Canada;;;
+municipalite-iles-de-la-madeleine;Municipalité des Îles-de-la-Madeleine;;;Municipal;;Cap-aux-Meules;;Canada;;;
+obv-saguenay;OBV du Saguenay;;;OBNL;;Saguenay;;Canada;;;
+opiconseils-chaudiere-appalaches;Opiconseils Chaudière-Appalaches;;;Industriel;;Saint-Charles-de-Bellechasse;;Canada;;;
+opticonseils-chaudiere-appalaches;OptiConseils Chaudière-Appalaches;;;Industriel;;Saint-Charles-de-Bellechasse;;Canada;;;
+organicocean;OrganicOcéan;;;Industriel;;Notre-Dame-des-Neiges;;Canada;;;
+OBAKIR;Organisme de bassins versants de Kamouraska, L'Islet et Rivière-du-Loup (OBAKIR);OBAKIR;;OBNL;;Saint-Pascal;;Canada;;;
+OBVNEBSL;Organisme des bassins versants du Nord-Est du Bas-Saint-Laurent (OBVNEBSL);OBVNEBSL;;OBNL;;Rimouski;;Canada;;;
+parafilms;Parafilms;;;Industriel;;Montréal;;Canada;;;
+parcs-canada;Parcs Canada;;;Fédéral;;Gatineau;;Canada;;;
+patrimoine-canadien;Patrimoine canadien;;;Fédéral;;Gatineau;;Canada;;;
+plan-action-saint-laurent;Plan d'action Saint-Laurent;;;Provincial;;;;Canada;;;
+polymer-france;Polymer-France;;;OBNL;;;;Canada;;;
+premiere-nation-kahnawake;Première Nation Kahnawake;;;Autochtone;;Kahnawake;;Canada;;;
+premiere-nation-wolastoqiyik-wahsipekuk;Première Nation Wolastoqiyik Wahsipekuk;;;Autochtone;;Cacouna;;Canada;;;
+premiere-nation-innus-essipit;Première Nation des Innus Essipit;;;Autochtone;;Essipit;;Canada;;;
+programme-affluents-maritimes-robvq;Programme Affluents Maritimes du ROBVQ;;;;;Québec;;Canada;;;
+prefecture-saint-pierre-et-miquelon;Préfecture de Saint-Pierre-et-Miquelon;;;Fédéral;;Saint-Pierre;;France;;;
+MPO;Pêches et Océans Canada (MPO);MPO;;;;Ottawa;;Canada;;;
+r-d-mytis;R-D Mytis;;;Industriel;;;;Canada;;;
+radio-canada;Radio-Canada;;;Industriel;;Montréal;;Canada;;;
+ILVO;Research Institute for Agriculture, Fisheries and Food (ILVO);ILVO;;Industriel;;Merelbeke-Melle;;Belgique;;;
+MEOPAR;Réseau de centres d’excellence Marine Environmental Observation Prediction and Response Network (MEOPAR);MEOPAR;;Industriel;;Halifax;;Canada;;;
+seaber;SEABER;;;Industriel;;;;Canada;;;
+salaweg;Salaweg;;;Industriel;;Gesgapegiag;;Canada;;;
+school-maritime-studies-marine;School of Maritime Studies - Marine Institute;;;Université;;St. John's;;Canada;;;
+seabiosis;Seabiosis;;;Industriel;;Carleton-sur-Mer;;Canada;;;
+SHC;Service hydrographique du Canada (SHC);SHC;;Fédéral;;Ottawa;;Canada;;;
+skogforsk;Skogforsk;;;Industriel;;Uppsala;;Suède;;;
+Sepaq;Société des établissements de plein air du Québec (Sépaq);Sepaq;;Provincial;;Québec;;Canada;;;
+sorbonne-universite;Sorbonne Université;;;Université;;Paris;;Canada;;;
+station-recherche-iles-mingan;Station de recherche des îles Mingan;;;Industriel;;Longue-Pointe-de-Mingan;;Canada;;;
+steadman-institute;Steadman Institute;;;Industriel;;Vail;;États-Unis;;;
+super-splendide;Super splendide;;;Industriel;;Montréal;;Canada;;;
+tcr-haut-saint-laurent-grand-montreal;TCR Haut-Saint-Laurent Grand Montréal;;;Municipal;;Montréal;;Canada;;;
+table-concertation-regionale-sud;Table de concertation régionale du sud de l'estuaire moyen;;;OBNL;;Rimouski;;Canada;;;
+ubisoft;UBISOFT;;;Industriel;;Montréal;;Canada;;;
+upa-chaudiere-appalaches;UPA Chaudière-Appalaches;;;OBNL;;Lévis;;Canada;;;
+upa-bellechasse;UPA de Bellechasse;;;OBNL;;Saint-Henri;;Canada;;;
+university-arizona;University of Arizona;;;Université;;Tucson;;États-Unis;;;
+UBC;University of British Columbia (UBC);UBC;;Université;;Vancouver;;Canada;;;
+university-florida;University of Florida;;;Université;;Gainesville;;États-Unis;;;
+university-new-brunswick;University of New Brunswick;;;Université;;Fredericton;;Canada;;;
+university-saskatchewan;University of Saskatchewan;;;Université;;Saskatoon;;Canada;;;
+universite-ottawa;Université d'Ottawa;;;Université;;Ottawa;;Canada;;;
+universite-bretagne-occidentale;Université de Bretagne Occidentale;;;Université;;Brest;;France;;;
+universite-lorraine;Université de Lorraine;;;Université;;Nancy;;France;;;
+universite-toulon;Université de Toulon;;;Université;;La Garde;;France;;;
+ville-baie-saint-paul;Ville de Baie-Saint-Paul;;;Municipal;;Baie-Saint-Paul;;Canada;;;
+ville-lincoln;Ville de Lincoln;;;Municipal;;Lincoln;Ontario;Canada;;;
+ville-montreal;Ville de Montréal;;;Municipal;;Montréal;;Canada;;;
+ville-sainte-anne-de-sorel;Ville de Sainte-Anne-de-Sorel;;;Municipal;;Sainte-Anne-de-Sorel;;Canada;;;
+ville-trois-rivieres;Ville de Trois-Rivières;;;Municipal;;Trois-Rivières;;Canada;;;
+ville-victoriaville;Ville de Victoriaville;;;Municipal;;Victoriaville;;Canada;;;
+ecomaris;Écomaris;;;OBNL;;Montréal;;Canada;;;
+etat-francais;État Français;;;Fédéral;;Paris;;France;;;

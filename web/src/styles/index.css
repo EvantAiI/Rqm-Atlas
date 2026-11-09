@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Le téléphone : 900 px de large au plus (le même seuil que PHONE_QUERY dans utils/screen.ts). */
+@custom-variant phone (@media (max-width: 900px));
+
+/* La charte du RQM (rqm.quebec, thème Uncode) : bleu foncé #007199, bleu clair #0099c8, gris #555752 et #8c8983. Le gris
+   de texte du site, #777, échoue au contraste AA : #555752, aussi dans la charte, le remplace. Le texte sur quatre
+   tailles (12, 13, 15, 17), les espacements en multiples de 4 px. Toutes les couleurs de la page sont ici : les classes
+   Tailwind (bg-surface, text-primary…) et la carte (cssColour("--regular")) lisent les mêmes jetons. */
+@theme {
+  --color-primary: #007199;
+  --color-accent: #0099c8;
+  --color-background: #f7f7f7;
+  --color-surface: #ffffff;
+  --color-ink: #555752;
+  --color-ink-strong: #303133;
+  --color-ink-muted: #6a6a6a;
+  --color-line: #eaeaea;
+  --color-line-strong: #dddddd;
+  --color-land: #f4f3ef;
+  --color-dimmed: #e4e7ea;
+  --color-network: #b9bec3;   /* la pastille d'une ville sans membre de la fiche */
+  /* Les catégories de membres : la recherche en tons de mer (Régulier foncé, Associé clair), les usagers en trois teintes
+     à eux ; toutes loin des couleurs des axes (ΔE2000 ≥ 20) : une couleur ne dit qu'une chose. */
+  --color-regular: #126c6c;
+  --color-associate: #069ca2;
+  --color-industrial: #848a12;
+  --color-community: #a3004f;
+  --color-government: #4e24a2;
+  --color-collaboration: #555752;
+  --font-sans: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --shadow-panel: 0 5px 15px rgba(0, 0, 0, .05);
+  --radius-panel: 2px;
+}
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body { margin: 0; background: var(--color-background); color: var(--color-ink); font: 400 15px/1.5 var(--font-sans); }
+  a { color: var(--color-primary); }
+  a:hover { color: var(--color-accent); }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  [tabindex="-1"]:focus { outline: none; }
+}

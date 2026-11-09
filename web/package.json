@@ -1,0 +1,33 @@
+{
+  "name": "rqm-map",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx scripts/precompute.ts && vite",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "lint": "eslint .",
+    "build": "tsx scripts/precompute.ts && npm run typecheck && npm run lint && vite build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "maplibre-gl": "6.11.2",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "zustand": "5.0.16"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "20.19.43",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@vitejs/plugin-react": "6.1.2",
+    "eslint": "10.9.1",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.14",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2",
+    "vite": "8.3.5",
+    "vitest": "4.1.12"
+  }
+}
