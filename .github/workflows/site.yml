@@ -22,14 +22,14 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Valider les données (data/)
         run: python3 tools/validate.py
       - name: Tester les outils Python
         run: python3 -m unittest discover tests
       - name: Écrire les données de la page (web/generated/)
         run: python3 tools/build_data.py
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -42,7 +42,7 @@ jobs:
         run: npm --prefix web test
       - name: Préparer la publication
         if: github.event_name != 'pull_request' && github.actor != 'nektos/act'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: web/dist
 
@@ -58,4 +58,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -114,3 +114,16 @@ Un fichier `.env` à la racine (ignoré par git) peut donner deux réglages, tou
 | [Icônes de Mapzen](https://github.com/tangrams/icons), par [Protomaps](https://github.com/protomaps/basemaps-assets) | icônes du fond | MIT |
 
 Les textes de ces deux licences accompagnent les fichiers : `web/public/basemap/fonts/OFL.txt` et `web/public/basemap/sprites/LICENSE.md`.
+
+## Licence
+
+- **Le code** est sous [AGPL-3.0](LICENSE). On peut le reprendre et le modifier. Qui met en ligne une version
+  modifiée doit en publier le code, sous la même licence.
+- **Les données** (`data/`, `collected/`) sont sous [CC BY-NC 4.0](data/LICENSE)
+  ([traduction officielle en français](https://creativecommons.org/licenses/by-nc/4.0/legalcode.fr)). On peut les
+  réutiliser sans but commercial, en citant la source et en signalant ses modifications.
+- **Ce qui n'est pas couvert :**
+  - les titres officiels et les descriptions des projets et des programmes, repris de rqm.quebec (© Réseau Québec
+    maritime, tous droits réservés)
+  - le nom et le logo du Réseau Québec maritime
+  - le fond de carte (ODbL) et les fichiers tiers du tableau ci-dessus, qui gardent leur licence

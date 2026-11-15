@@ -58,8 +58,3 @@ Aucun fichier n'approche la limite de 100 Mo de GitHub.
 
 Dans une iframe, la molette fait défiler la page qui l'accueille ; on zoome sur la carte avec Ctrl (ou ⌘) et la molette.
 `allow="geolocation"` laisse « près de chez moi » demander la position du visiteur.
-
-## Licence
-
-Le dépôt n'a pas de fichier `LICENSE`. Le titulaire des droits en choisit une pour le code avant d'ouvrir le dépôt ; les
-données gardent les licences de leurs sources (README, « Sources et licences »).
