@@ -1,6 +1,8 @@
 // Dans la vue d'ensemble, le survol d'un point, d'une bulle ou d'une grappe met ses traits en avant et efface les autres.
+// Celui d'une gare, les traits de tous les membres de sa ville.
 import { useEffect } from "react";
 import type { ExpressionSpecification, Map as MapLibre, MapMouseEvent } from "maplibre-gl";
+import { MUNICIPALITIES } from "../../../data/placement";
 import { useAppStore } from "../../../stores/appStore";
 import { targetAt } from "../lib/targets";
 import { LINK_HALO, LINK_OPACITY } from "../lib/layers";
@@ -19,8 +21,8 @@ export function useLinkFocus(map: MapLibre | null) {
     };
     const update = () => {
       frame = 0;
-      const point = useAppStore.getState().selection ? undefined : targetAt(map, last!.point).point;
-      focus(point ? point.ids ?? [point.id!] : []);
+      const { point, link } = useAppStore.getState().selection ? {} : targetAt(map, last!.point);
+      focus(point ? point.ids ?? [point.id!] : link?.town ? MUNICIPALITIES.get(link.town)?.ids ?? [] : []);
     };
     const onMove = (e: MapMouseEvent) => { last = e; if (!frame) frame = requestAnimationFrame(update); };
     const clear = () => { cancelAnimationFrame(frame); frame = 0; focus([]); };

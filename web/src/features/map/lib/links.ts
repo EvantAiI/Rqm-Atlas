@@ -240,8 +240,8 @@ const at = (e: End, z: number) => (typeof e === "string" ? drawnAt(e, z) : e);
 export const endsKey = (arcs: PlannedArc[], z: number) => arcs.map((x) =>
   (x.fan ? x.fan.sides.flat().map((b) => at(b.ids[0], z)).join("|") : `${at(x.a, z)}|${at(x.b, z)}`)).join(";");
 
-// Les membres qu'un trait touche, en « ,id,id, » : le survol d'un point, d'une bulle ou d'une grappe qui les tient le
-// met en avant.
+// Les membres qu'un trait touche, en « ,id,id, » : le survol d'un point, d'une bulle, d'une grappe ou d'une gare qui les
+// tient le met en avant.
 const touching = (ids: End[]) => `,${ids.filter((e) => typeof e === "string").join(",")},`;
 
 type Pixel = { x: number; y: number };
