@@ -9,7 +9,7 @@ import { Tabs, panelId, tabId } from "./Tabs";
 import { PANEL_BODY_ID } from "../../../constants/ids";
 import { MemberSearch } from "./MemberSearch";
 import { Categories } from "./Categories";
-import { OutsideQuebec } from "./OutsideQuebec";
+import { OffMap } from "./OffMap";
 import { MemberFilters } from "./MemberFilters";
 import { MemberCount } from "./MemberCount";
 import { ProjectSearch } from "./ProjectSearch";
@@ -37,7 +37,7 @@ export function Panel() {
         <Tabs />
         {tab === "members" ? (
           <div id={panelId("members")} role="tabpanel" aria-labelledby={tabId("members")}>
-            <MemberSearch inputRef={search} /><Categories /><OutsideQuebec /><MemberFilters /><MemberCount />
+            <MemberSearch inputRef={search} /><Categories /><OffMap /><MemberFilters /><MemberCount />
           </div>
         ) : (
           <div id={panelId("projects")} role="tabpanel" aria-labelledby={tabId("projects")}>

@@ -20,8 +20,10 @@ export function useLinks(map: MapLibre | null) {
     let frame = 0, drawn: string | null = null;
     const draw = () => {
       const z = map.getZoom(), planned = getOrCreate(plans, drawKey(z), () => plan(input, z));
-      const key = endsKey(planned, z);
-      if (key === drawn) return;   // sous DOT_ZOOM ou vers des grappes, les bouts ne bougent pas : rien à renvoyer
+      // les traits côte à côte sont écartés en pixels écran : on redessine à chaque dixième de zoom ; entre deux, rien
+      // n'a bougé, rien à renvoyer
+      const key = `${endsKey(planned, z)}#${Math.round(z * 10)}`;
+      if (key === drawn) return;
       drawn = key;
       setData(map, "links", geometry(planned, z));
     };

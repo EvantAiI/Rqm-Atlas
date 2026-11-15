@@ -1,4 +1,5 @@
 // Ce que la légende explique : les traits, leur couleur, les membres. Les mots du RQM (rqm.quebec/membres).
+import type { ReactNode } from "react";
 import { DATA } from "../../../data/dataset";
 import { BLOCK_TITLE } from "../../../styles/classes";
 import { CATEGORIES, USER_CATEGORIES, categoryColour } from "../../../data/categories";
@@ -8,6 +9,9 @@ import { forTouch } from "../../../utils/format";
 
 const ROW = "flex items-baseline gap-1.5 py-px";
 const LINE = "mr-0.5 inline-block align-middle";
+// les rayons et les gares de la carte (features/map/lib/links.ts, layers.ts)
+const SPOKE = { stroke: "#64748b", strokeOpacity: 0.55, strokeWidth: 1.4 };
+const STATION = { fill: "#fff", stroke: "#334155", strokeWidth: 1.8 };
 // Une grappe de quatre : la moitié de Réguliers, deux usagers ; trois membres de trois catégories ; une grappe de quatre
 // dont un seul membre est retenu par la fiche ou le filtre, les trois autres en gris (le chiffre ne compte alors que les
 // retenus : features/map/lib/images.ts).
@@ -25,8 +29,13 @@ function Bubble({ background, n }: { background: string; n: number }) {
   );
 }
 
+// Un petit morceau de carte, de la largeur commune aux traits.
+function Sketch({ children }: { children: ReactNode }) {
+  return <svg aria-hidden="true" width="34" height="14" viewBox="0 0 34 14" className="mr-0.5 flex-none self-center overflow-visible">{children}</svg>;
+}
+
 export function LegendBody() {
-  const first = DATA.axes[0].color;
+  const first = DATA.axes[0].color, member = categoryColour(CATEGORIES[0]);
   return (
     // une colonne, à la largeur du panneau ; le texte de la légende, pas le gris des sources
     <div className="mt-1 grid gap-2 pl-4 leading-[1.4] text-ink">
@@ -34,9 +43,27 @@ export function LegendBody() {
         <div className={`${BLOCK_TITLE} pb-0.5`}>Les traits</div>
         <ul>
           <li className={ROW}>
-            <span className={`${LINE} w-[18px] border-t-[1.5px]`} style={{ borderColor: first }} />
-            <span className={`${LINE} w-[18px] border-t-[5px]`} style={{ borderColor: first }} />
+            <Sketch>
+              <path d="M5 11 Q17 0 29 11" fill="none" stroke={first} strokeWidth={2.5} strokeLinecap="round" />
+              <circle cx={5} cy={11} r={3} {...STATION} /><circle cx={29} cy={11} r={3} {...STATION} />
+            </Sketch>
+            <span>d'une ville à l'autre, les porteurs de projets et leurs participants</span>
+          </li>
+          <li className={ROW}>
+            <Sketch>
+              <path d="M1 7 H13" stroke={first} strokeWidth={1.5} strokeLinecap="round" />
+              <path d="M19 7 H33" stroke={first} strokeWidth={5} strokeLinecap="round" />
+            </Sketch>
             <span>plus épais, plus de projets en commun</span>
+          </li>
+          <li className={ROW}>
+            <Sketch>
+              <path d="M5 2.5 L28 7 M5 11.5 L28 7" fill="none" {...SPOKE} />
+              <circle cx={5} cy={2.5} r={3.3} fill={member} stroke="rgba(0,0,0,.4)" strokeWidth={0.8} />
+              <circle cx={5} cy={11.5} r={3.3} fill={member} stroke="rgba(0,0,0,.4)" strokeWidth={0.8} />
+              <circle cx={28} cy={7} r={3} {...STATION} />
+            </Sketch>
+            <span>de près, un membre relié en gris au rond blanc, le centre de sa ville</span>
           </li>
         </ul>
         <p className="mt-0.5 text-ink-muted">{forTouch("Cliquez un trait pour voir ses projets.")}</p>
@@ -62,8 +89,12 @@ export function LegendBody() {
             <span>un membre, à la couleur de sa catégorie</span>
           </li>
           <li className={ROW}>
+            <Bubble background={CLUSTER} n={7} />
+            <span>de loin, une ville : le chiffre compte ses membres</span>
+          </li>
+          <li className={ROW}>
             <Bubble background={CLUSTER} n={4} />
-            <span>4 membres trop proches pour être séparés</span>
+            <span>de près, 4 membres trop proches pour être séparés</span>
           </li>
           <li className={ROW}>
             <Bubble background={MIXED} n={3} />

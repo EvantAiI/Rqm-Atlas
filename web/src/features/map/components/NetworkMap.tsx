@@ -12,6 +12,7 @@ import { useMap } from "../hooks/useMap";
 import { useRegionOutline } from "../hooks/useRegionOutline";
 import { useSources } from "../hooks/useSources";
 import { useTooltip } from "../hooks/useTooltip";
+import { useLinkFocus } from "../hooks/useLinkFocus";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "../../../styles/map.css";
 
@@ -20,6 +21,7 @@ export function NetworkMap() {
   useSources(map);
   useLinks(map);
   useTooltip(map);
+  useLinkFocus(map);
   useClicks(map);
   useFraming(map);
   useRegionOutline(map);

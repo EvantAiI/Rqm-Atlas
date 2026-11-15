@@ -29,7 +29,7 @@ const town = (o: Organisation) => { const town = TOWN_BY_NAME.get(o.town!)!; ret
 
 export const STEPS: Step[] = [
   { title: "La carte du réseau", target: mapZone, besidePanel: true,
-    text: () => `Voici les ${formatNumber(MEMBERS.length)} membres du Réseau Québec maritime et les ${formatNumber(DATA.projects.length)} projets de recherche qu'ils mènent ensemble.\nChaque trait relie deux villes dont les membres travaillent ensemble.`,
+    text: () => `Voici les ${formatNumber(MEMBERS.length)} membres du Réseau Québec maritime et les ${formatNumber(DATA.projects.length)} projets de recherche qu'ils mènent ensemble.\nLes traits relient le porteur de chaque projet à ses participants. D'une ville à l'autre, ils n'en font qu'un.`,
     start: () => { page().close(); page().showOverview(600); page().setShowCollaborations(true); } },
   { title: "Une bulle, une ville", target: (demo, phase) => (phase ? mapZone() : bubbleOf(demo.id)), besidePanel: true,
     text: (demo) => `De loin, les membres d'une même ville sont réunis dans une bulle, et le chiffre au centre dit combien ils sont.\nChoisir la bulle de ${demo.town} zoome jusqu'à ses membres : un point pour chacun.`,
@@ -40,13 +40,13 @@ export const STEPS: Step[] = [
       later(2600, () => map?.easeTo({ zoom: town(demo).zoom, duration: 1400 }));
     } },
   { title: "Un point, un membre", target: mapZone, besidePanel: true,
-    text: (demo) => forTouch(`Un clic sur un point ouvre la fiche du membre, ici ${demo.acronym || demo.name} : son adresse et ses projets.\nSur la carte, ses traits partent vers les villes de ses partenaires.`),
+    text: (demo) => forTouch(`Un clic sur un point ouvre la fiche du membre, ici ${demo.acronym || demo.name} : son adresse et ses projets.\nSur la carte, ses traits le relient aux porteurs de ses projets et, pour ceux qu'il porte, à chaque participant.`),
     start: ({ demo, map, later }) => {
       page().close(); map?.jumpTo(town(demo));
       later(900, () => page().open({ type: "member", id: demo.id }, { recenter: true }));
     } },
   { title: "Les projets", filters: true, target: () => rectOf('[data-tour="projects-tab"]'),
-    text: () => `L'onglet Projets liste les ${formatNumber(DATA.projects.length)} projets financés par le RQM.\nChoisissez-en un : la carte trace le réseau de ses participants.`,
+    text: () => `L'onglet Projets liste les ${formatNumber(DATA.projects.length)} projets financés par le RQM.\nChoisissez-en un : la carte relie son porteur à chacun de ses participants.`,
     start: () => { page().close(); page().setTab("projects"); } },
   { title: "Cherchez par sujet", filters: true,
     target: (_, phase) => (phase ? rectOf('[data-zone="sheet"]') : around(rectOf('[data-tour="search"]'), rectOf('[data-tour="search"] [role="listbox"]'))),

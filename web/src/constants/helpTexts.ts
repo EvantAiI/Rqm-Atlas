@@ -8,9 +8,9 @@ const TEXTS = {
   categories: "Régulier : une université, un collège ou un CCTT, actif en recherche maritime.\n"
     + "Associé : une entreprise ou un centre actif en recherche maritime, comme une firme de génie-conseil.\n"
     + "Usager : un acteur du secteur maritime, comme un armateur, un port ou une entreprise de pêche.",
-  collaborations: "Un trait relie deux villes dont les membres mènent des projets ensemble.\n\n"
-    + "Plus le trait est épais, plus ces projets sont nombreux. Sa couleur est celle de leur axe de recherche le plus fréquent.\n\n"
-    + "Sans sélection, la carte montre les 25 liens les plus forts. Cliquez un trait pour voir ses projets.",
+  collaborations: "Un trait relie le porteur d'un projet à chacun de ses participants. D'une ville à l'autre, ces liens n'en font qu'un.\n\n"
+    + "Plus le trait est épais, plus les projets en commun sont nombreux. Sa couleur est celle de leur axe de recherche le plus fréquent.\n\n"
+    + "De près, un trait gris relie chaque membre qui a des traits au centre de sa ville. Cliquez un trait pour voir ses projets.",
   axisBreakdown: "Chaque pastille est un axe de recherche. Son nombre compte les projets de ce membre dont c'est l'axe principal.\n\n"
     + "Cliquez une pastille pour ne garder que ces projets, ici et sur la carte.",
   roles: "Porteur : l'organisation où travaille le chercheur principal du projet.\n\n"

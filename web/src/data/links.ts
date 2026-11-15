@@ -32,7 +32,7 @@ function projectsColour(projects: string[]) {
   return axisColour(dominantAxis(byAxis));
 }
 
-// colour : imposée par un arc d'un seul axe (la fiche d'un membre, d'une ville) ; sinon l'axe le plus fréquent.
+// colour : imposée par un arc d'un seul axe (la fiche d'un sujet) ; sinon l'axe le plus fréquent.
 export function makeLink(from: string[], to: string[], projects: string[], [a, b]: [LngLat, LngLat], colour = projectsColour(projects)): LinkSelection {
   return { type: "link", id: linkLabel(from, to), from, to, a, b, colour, projects };
 }

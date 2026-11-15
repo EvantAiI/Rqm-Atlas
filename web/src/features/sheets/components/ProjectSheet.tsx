@@ -15,6 +15,8 @@ import { ACTIONS, GROUP, LIST, SOURCE } from "../../../styles/classes";
 export function ProjectSheet({ id }: { id: string }) {
   const p = PROJECT_BY_ID.get(id)!, parts = PARTICIPANTS_BY_PROJECT.get(id) || [];
   const outside = parts.filter((x) => !ORG_BY_ID.get(x.org)!.category).length;
+  // un trait part toujours du porteur : sans porteur membre, la carte n'en trace aucun
+  const noLines = !parts.some((x) => x.role === "principal" && ORG_BY_ID.get(x.org)!.category);
   const axes = [[p.axis, false] as const, ...(p.secondaryAxes || []).map((a) => [a, true] as const)].filter(([a]) => AXIS_BY_CODE.has(a));
   const programme = DATA.programmes?.[p.programme];
   // membres d'abord, puis par nom
@@ -47,6 +49,7 @@ export function ProjectSheet({ id }: { id: string }) {
         {outside > 0 && <p className={`my-3 ${SOURCE}`}>{outside > 1
           ? `${formatNumber(outside)} d'entre elles ne sont pas membres du RQM : elles n'ont pas de point sur la carte.`
           : "L'une d'elles n'est pas membre du RQM : elle n'a pas de point sur la carte."}</p>}
+        {noLines && <p className={`my-3 ${SOURCE}`}>Son porteur n'est pas membre du RQM : la carte ne trace aucun trait pour ce projet.</p>}
       </Section>
     </>
   );

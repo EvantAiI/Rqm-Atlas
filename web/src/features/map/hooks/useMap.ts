@@ -4,11 +4,11 @@ import { AttributionControl, Map as MapLibreMap, NavigationControl, setWorkerUrl
 // MapLibre 6 cherche son worker à côté de son propre fichier, que le build fond dans un morceau : il est construit à part
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { MOBILE } from "../../../utils/screen";
-import { Z_MAX, baseStyle, registerTileProtocols } from "../lib/baseStyle";
+import { SYLLABIC_GLYPHS, Z_MAX, baseStyle, registerTileProtocols } from "../lib/baseStyle";
 import { overview } from "../lib/framing";
 import { maxBounds } from "../lib/bounds";
 import { addFixedImages, drawBubble } from "../lib/images";
-import { SOURCES, layers } from "../lib/layers";
+import { BOTTOM_DOTS, SOURCES, layers } from "../lib/layers";
 
 import { useMapStore } from "../../../stores/mapStore";
 
@@ -21,7 +21,7 @@ const LOCALE = {
   "CooperativeGesturesHandler.MobileHelpText": "Deux doigts pour déplacer la carte",
 };
 // les régions (leurs contours, et la région de chaque membre) : le découpage officiel, sous CC BY 4.0
-const CREDITS = 'Villes : <a href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a> · Régions : <a href="https://www.donneesquebec.ca" target="_blank" rel="noopener">Données Québec</a> · <a href="https://maplibre.org" target="_blank" rel="noopener">MapLibre</a>';
+const CREDITS = 'Villes : <a href="https://www.geonames.org" target="_blank" rel="noopener">GeoNames</a> et <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a> · Régions : <a href="https://www.donneesquebec.ca" target="_blank" rel="noopener">Données Québec</a> · <a href="https://maplibre.org" target="_blank" rel="noopener">MapLibre</a>';
 
 // Rend [le conteneur à poser, la place du bouton « Tout le réseau » dans les contrôles] ; la carte prête va dans useMapStore.
 export function useMap() {
@@ -59,9 +59,12 @@ export function useMap() {
       for (const c of layers()) m.addLayer(c);
       // les noms de lieux du fond passent au-dessus des traits (qu'aucune collision ne voit), sous les points : placés
       // après eux, ils leur cèdent toujours la place
-      for (const id of ["places_subplace", "places_locality"]) for (const c of [id, `${id}-detail`]) m.moveLayer(c, "members");
+      for (const id of ["places_subplace", "places_locality"]) for (const c of [id, `${id}-detail`]) m.moveLayer(c, BOTTOM_DOTS);
       useMapStore.setState({ map: m });
     });
+    // la carte complète, les lettres du syllabique en dernier, dans le cache du navigateur : prêtes pour le Nord
+    // (baseStyle.ts)
+    m.once("idle", () => { for (const path of SYLLABIC_GLYPHS) fetch(`${base}${path}`).catch(() => {}); });
     overview(m, 0);
     return () => { useMapStore.setState({ map: null }); m.remove(); };
   }, []);

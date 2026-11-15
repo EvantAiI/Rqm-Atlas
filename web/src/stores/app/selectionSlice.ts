@@ -3,6 +3,7 @@ import type { StateCreator } from "zustand";
 import { ORG_BY_ID } from "../../data/dataset";
 import type { Place } from "../../data/nearby";
 import { POSITION } from "../../data/placement";
+import { mainTown } from "../../data/towns";
 import { NEARBY, isCrossroads, sameSelection, type Selection } from "../selection";
 import { visibleMembers } from "../selectors";
 import { DEFAULT_MEMBER_FILTERS, type FiltersSlice, type MemberFilters } from "./filtersSlice";
@@ -10,11 +11,13 @@ import type { UiSlice } from "./uiSlice";
 
 // Une demande à la carte : elle répond à chaque nouveau `seq`. selection : que la sélection soit visible (recenter :
 // la cadrer même si elle l'est) ; filteredView : les membres de la vue filtrée (« Voir sur la carte ») ; nearMe : le lieu
-// du visiteur et le membre choisi pour lui ; overview : la vue d'ensemble (la visite guidée la rejoue).
+// du visiteur et le membre choisi pour lui ; group : une bulle ou une grappe cliquée, ses membres ; overview : la vue
+// d'ensemble (la visite guidée la rejoue).
 export type FramingRequest =
   | { seq: number; kind: "selection"; recenter: boolean }
   | { seq: number; kind: "filteredView" }
   | { seq: number; kind: "nearMe"; here: [number, number]; id: string }
+  | { seq: number; kind: "group"; ids: string[] }
   | { seq: number; kind: "overview"; duration: number };
 export interface OpenOptions { recenter?: boolean; fromPanel?: boolean }
 
@@ -27,6 +30,7 @@ export interface SelectionSlice {
   openOrganisation(id: string, fromPanel?: boolean): void;
   openFromAddress(selection: Selection): void;
   openNearbyChoice(here: Place, id: string): void;
+  openGroup(ids: string[]): void;
   close(): void;
   setSheetAxis(axis: string): void;
   showResults(): void;
@@ -80,6 +84,9 @@ export const createSelectionSlice: StateCreator<AppSlices, [], [], SelectionSlic
     return { ...list, ...nextOpen({ ...state, ...list }, { type: "member", id }), filtersOpen: false,
              framing: { seq: state.framing.seq + 1, kind: "nearMe", here: [here.lon, here.lat], id } };
   }),
+  // une bulle ou une grappe : la fiche de sa ville, et la carte zoome sur elle (pas sur la ville et tous ses partenaires)
+  openGroup: (ids) => set((state) => ({ ...nextOpen(state, { type: "town", id: mainTown(ids) }), filtersOpen: false,
+    framing: { seq: state.framing.seq + 1, kind: "group", ids } })),
   close: () => set({ selection: null, backTo: null, sheetAxis: "" }),
   setSheetAxis: (sheetAxis) => set({ sheetAxis }),
   // voir les résultats, c'est voir la carte : la fiche ouverte se ferme (elle garderait ses membres à elle en couleur, et à

@@ -11,9 +11,10 @@ export const CLUSTER_MIN_SIZE = 4, CLUSTER_RADIUS = 36;   // une grappe tient se
 export const NOTCHES = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15];   // des entiers : MapLibre évalue icon-offset aux zooms entiers
 export const BUBBLE_LEVELS = [3, 4, 5, 6];   // le niveau n vaut pour les zooms [n, n + 1[ (le premier dès 0, le dernier jusqu'à DOT_ZOOM)
 
-export interface MemberSite { id: string; lat: number; lon: number; town: string; category: Category }
+export interface MemberSite { id: string; lat: number; lon: number; town: string; category: Category; quebec: boolean }
 export interface Cluster { ids: string[]; center: [number, number]; splitZoom: number }
-export interface Bubble { name: string; ids: string[]; center: [number, number] }
+// also : la ville du Québec nommée avec elle (« Ottawa-Gatineau »)
+export interface Bubble { name: string; also?: string; ids: string[]; center: [number, number] }
 export interface Town { name: string; ids: string[]; lat: number; lon: number }
 export interface Placement {
   placed: string[];                       // les membres dessinés sur la carte
@@ -63,8 +64,18 @@ export function computePlacement(sites: MemberSite[]): Placement {
     town.ids.push(o.id); town.lat += o.lat; town.lon += o.lon;
     return m;
   }, new Map<string, Town>()).values()].map((town) => ({ ...town, lat: town.lat / town.ids.length, lon: town.lon / town.ids.length }));
+  // Une bulle au nom d'une ville hors du Québec qui tient aussi une ville du Québec nomme aussi la plus grosse de celles-ci
+  // (« Ottawa-Gatineau », features/map/lib/sources.ts) : un membre québécois ne se range pas sous le seul nom d'une ville
+  // voisine hors du Québec.
+  const quebec = new Map(sites.map((o) => [o.town, o.quebec]));
+  const alsoNamed = (g: { name: string; ids: string[] }) => {
+    if (quebec.get(g.name)) return {};
+    const inside = towns.filter((t) => quebec.get(t.name) && t.ids.every((id) => g.ids.includes(id)))
+      .sort((a, b) => b.ids.length - a.ids.length || (a.name < b.name ? -1 : 1))[0];
+    return inside ? { also: inside.name } : {};
+  };
   const bubbles = BUBBLE_LEVELS.map((n) => mergeBubbles(towns.map((town) => ({ name: town.name, ids: town.ids, ...toPixels(town.lat, town.lon, n + 0.5) })), 3)
-    .map((g) => ({ name: g.name, ids: g.ids, center: fromPixels(g.x, g.y, n + 0.5) })));
+    .map((g) => ({ name: g.name, ...alsoNamed(g), ids: g.ids, center: fromPixels(g.x, g.y, n + 0.5) })));
   return { placed: sites.map((o) => o.id), clusterOf, clusters: clusters.map((l) => l.map(({ ids, center, splitZoom }) => ({ ids, center, splitZoom }))),
            offsets, towns, bubbles };
 }

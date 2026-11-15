@@ -1,7 +1,7 @@
 // Combien de membres la vue filtrée garde, et leur liste à emporter (repliée), chacun ouvrant sa fiche.
 import { useMemo } from "react";
 import { MEMBERS, ORG_BY_ID, projectCount } from "../../../data/dataset";
-import { isOutsideQuebec } from "../../../data/regions";
+import { isOffMap } from "../../../data/regions";
 import { COLLATION } from "../../../lib/sorting";
 import { PLACED_MEMBERS } from "../../../data/placement";
 import { useAppStore } from "../../../stores/appStore";
@@ -14,7 +14,7 @@ import { ViewTools } from "./ViewTools";
 import { QUIET } from "../../../styles/classes";
 
 // Les membres sans point : l'onglet les compte, la carte non.
-const OUTSIDE = MEMBERS.filter(isOutsideQuebec).length;
+const OUTSIDE = MEMBERS.filter(isOffMap).length;
 
 function FilteredList({ ids }: { ids: Set<string> }) {
   const members = useMemo(() => [...ids].map((id) => ORG_BY_ID.get(id)!).sort((a, b) => COLLATION.compare(a.name, b.name)), [ids]);
@@ -43,7 +43,7 @@ export function MemberCount() {
             <span aria-live="polite"><b className="text-ink-strong">{plural(n, "membre")}</b> affichés sur les {formatNumber(PLACED_MEMBERS.length)} de la carte</span>
             {filtered && <button type="button" className={QUIET} onClick={() => useAppStore.getState().resetMemberFilters()}>Tout afficher</button>}
           </div>
-          {OUTSIDE > 0 && <p className="-mt-2 mb-3 text-[12px] text-ink-muted">Sur les {formatNumber(MEMBERS.length)} membres, {formatNumber(OUTSIDE)} sont hors du Québec et n'ont pas de point.</p>}
+          {OUTSIDE > 0 && <p className="-mt-2 mb-3 text-[12px] text-ink-muted">Sur les {formatNumber(MEMBERS.length)} membres, {formatNumber(OUTSIDE)} sont hors de la carte et n'ont pas de point.</p>}
         </>
       )}
       {filtered && (

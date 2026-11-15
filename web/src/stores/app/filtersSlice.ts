@@ -11,7 +11,7 @@ export const DEFAULT_PROJECT_FILTERS: ProjectFilters = { query: "", year: 0, pro
 
 export interface FiltersSlice extends MemberFilters {
   tab: Tab;
-  showCollaborations: boolean;          // la vue d'ensemble montre les liens les plus forts du réseau
+  showCollaborations: boolean;          // la vue d'ensemble montre les traits, du porteur de chaque projet à ses participants
   projectFilters: ProjectFilters;
   setTab(tab: Tab): void;
   setMemberFilters(f: Partial<MemberFilters>): void;

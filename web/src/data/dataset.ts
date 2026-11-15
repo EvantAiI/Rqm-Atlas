@@ -1,5 +1,4 @@
 // Les données écrites par tools/build_data.py (generated/data.json), et les index dont toute la page se sert.
-import { collaborations } from "../lib/network";
 import { getOrCreate } from "../lib/collections";
 import { COLLATION } from "../lib/sorting";
 import data from "../../generated/data.json";
@@ -20,10 +19,25 @@ for (const [project, org, role] of DATA.participations) {
 }
 // Les organisations d'un projet (membres ou non)
 export const projectOrgs = (project: string) => (PARTICIPANTS_BY_PROJECT.get(project) || []).map((x) => x.org);
+// Ceux à qui un organisme est relié dans un projet, en étoile : le porteur l'est à chaque participant, un participant au
+// seul porteur. Un trait de la carte veut dire « a mené un projet avec ».
+export function starPartners(id: string, project: string) {
+  const parts = PARTICIPANTS_BY_PROJECT.get(project) || [], leads = parts.some((x) => x.org === id && x.role === "principal");
+  return parts.filter((x) => x.org !== id && (leads || x.role === "principal")).map((x) => x.org);
+}
 export const projectCount = (id: string) => (PARTICIPATIONS_BY_ORG.get(id) || []).length;
-export const COLLABORATIONS = collaborations(DATA.participations, (id) => Boolean(ORG_BY_ID.get(id)?.category));
+// membre -> les membres à qui ses projets le relient, en étoile comme les traits, et ces projets ; les plus fournis d'abord
 export const PARTNERS_BY_ORG = new Map<string, { other: string; projects: string[] }[]>();
-for (const c of COLLABORATIONS) for (const [x, y] of [[c.a, c.b], [c.b, c.a]]) getOrCreate(PARTNERS_BY_ORG, x, () => []).push({ other: y, projects: c.projects });
+for (const o of MEMBERS) {
+  const partners = new Map<string, string[]>();
+  for (const { project } of PARTICIPATIONS_BY_ORG.get(o.id) || []) for (const other of starPartners(o.id, project)) {
+    if (!ORG_BY_ID.get(other)!.category) continue;
+    const projects = getOrCreate(partners, other, () => []);
+    if (!projects.includes(project)) projects.push(project);
+  }
+  const list = [...partners].map(([other, projects]) => ({ other, projects }));
+  if (list.length) PARTNERS_BY_ORG.set(o.id, list.sort((a, b) => b.projects.length - a.projects.length));
+}
 // Ce que fouille la recherche de projets : code, titres, programme, textes, noms et sigles des participants.
 export const PROJECT_SEARCH_TEXT = new Map(DATA.projects.map((p) => [p.id, [p.id, p.title, p.shortTitle, p.programme, p.teaser, p.description,
   ...(PARTICIPANTS_BY_PROJECT.get(p.id) || []).map(({ org: o }) => `${ORG_BY_ID.get(o)!.name} ${ORG_BY_ID.get(o)!.acronym || ""}`)].join(" ")]));

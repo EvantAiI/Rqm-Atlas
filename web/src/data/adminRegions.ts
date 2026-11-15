@@ -1,7 +1,7 @@
 // Les régions administratives du Québec : celle de chaque membre est déduite de son point au build (champ `region`,
 // tools/build_data.py) ; ici, leurs membres, leurs projets, les régions avec lesquelles elles travaillent, et ce que la
 // recherche en propose. Une région se nomme par son nom officiel (« Gaspésie–Îles-de-la-Madeleine »).
-import { DATA, ORG_BY_ID, PARTICIPATIONS_BY_ORG, PARTICIPANTS_BY_PROJECT, PROJECT_BY_ID, byActivity } from "./dataset";
+import { DATA, ORG_BY_ID, PARTICIPATIONS_BY_ORG, PARTNERS_BY_ORG, PROJECT_BY_ID, byActivity } from "./dataset";
 import { MUNICIPALITIES } from "./placement";
 import { getOrCreate } from "../lib/collections";
 import { normalize } from "../lib/search";
@@ -35,18 +35,18 @@ export const regionProjects = (name: string) => getOrCreate(PROJECTS, name, () =
   return [...ids].map((id) => PROJECT_BY_ID.get(id)!).sort((a, b) => b.year - a.year || a.id.localeCompare(b.id));
 });
 
-// Les autres régions où ses membres ont des partenaires de projet : leurs membres partenaires, leurs projets en commun ;
-// les plus fournies d'abord. Calculé une fois par région.
+// Les autres régions où ses membres ont des partenaires de projet, en étoile comme les traits : leurs membres partenaires,
+// leurs projets en commun ; les plus fournies d'abord. Calculé une fois par région.
 export interface RegionPartner { ids: string[]; projects: Set<string> }
 const PARTNERS = new Map<string, Map<string, RegionPartner>>();
 export const regionPartners = (name: string) => getOrCreate(PARTNERS, name, () => {
   const partners = new Map<string, RegionPartner>();
-  for (const project of regionProjects(name)) for (const { org } of PARTICIPANTS_BY_PROJECT.get(project.id) || []) {
+  for (const o of REGION_MEMBERS.get(name) || []) for (const { other: org, projects } of PARTNERS_BY_ORG.get(o.id) || []) {
     const other = orgRegion(org);
     if (!other || other === name) continue;
     const partner = getOrCreate(partners, other, () => ({ ids: [], projects: new Set<string>() }));
     if (!partner.ids.includes(org)) partner.ids.push(org);
-    partner.projects.add(project.id);
+    projects.forEach((p) => partner.projects.add(p));
   }
   return new Map([...partners].sort((a, b) => b[1].projects.size - a[1].projects.size));
 });

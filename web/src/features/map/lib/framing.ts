@@ -28,7 +28,7 @@ const centreOf = (m: PaddingOptions): [number, number] => [(m.left! - m.right!) 
 export function margins(map: MapLibre, sheetOpen: boolean): PaddingOptions {
   const p = zone("panel"), f = zone("sheet");
   const m = MOBILE ? { top: p.bottom + 32, bottom: (sheetOpen ? f.height : 0) + 56, left: 56, right: 48 }
-                   : { top: 56, bottom: 40, left: p.right + 40, right: (sheetOpen ? f.width + 16 : 0) + 80 };
+                   : { top: 56, bottom: 40, left: p.right + 56, right: (sheetOpen ? f.width + 16 : 0) + 80 };
   // jamais moins de 200 px de carte utile dans chaque sens : les marges rétrécissent d'autant
   const box = map.getContainer().getBoundingClientRect();
   for (const [a, b, side] of [["left", "right", box.width], ["top", "bottom", box.height]] as const) {
@@ -64,10 +64,10 @@ export const overview = (map: MapLibre, duration: number) =>
   map.fitBounds(EXTENT, { padding: margins(map, false), duration });
 
 // Une bulle, une grappe : ses membres cadrés, au zoom où chacun est un point si le cadre le permet.
-export function openGroup(map: MapLibre, ids: string[], sheetOpen: boolean) {
+export function frameGroup(map: MapLibre, ids: string[]) {
   const placed = ids.filter((id) => POSITION.has(id));
   map.fitBounds(boundsOf(placed.map((id) => POSITION.get(id)!)),
-    { padding: margins(map, sheetOpen), maxZoom: Math.max(...placed.map(dotZoom), map.getZoom() + 1), duration: 700 });
+    { padding: margins(map, true), maxZoom: Math.max(...placed.map(dotZoom), map.getZoom() + 1), duration: 700 });
 }
 
 // « Voir sur la carte » : les membres de la vue filtrée ; 24 px de plus, car aux zooms rapprochés un point est dessiné

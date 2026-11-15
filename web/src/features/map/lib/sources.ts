@@ -8,8 +8,9 @@ import { joinWithAnd } from "../../../utils/format";
 import { findSubject } from "../../../data/subjects";
 import type { Selection } from "../../../stores/selection";
 import { computeLabelHeights } from "../../../data/placement/labelHeights";
-import { BUBBLES, OFFSETS, CLUSTERS, CLUSTER_OF, LABEL_HEIGHTS, PLACED_MEMBERS, POSITION, TOWNS, dotPerNotch, nameOffsets } from "../../../data/placement";
+import { BUBBLE_LEVELS, BUBBLES, OFFSETS, CLUSTERS, CLUSTER_OF, LABEL_HEIGHTS, PLACED_MEMBERS, POSITION, TOWNS, dotPerNotch, nameOffsets } from "../../../data/placement";
 import { bubbleImage, dotImage } from "./images";
+import { CLUSTER_ZOOMS } from "./layers";
 
 // Poser les données d'une source de la carte.
 export const setData = (map: MapLibre, id: string, data: FeatureCollection) => map.getSource<GeoJSONSource>(id)!.setData(data);
@@ -31,28 +32,31 @@ function pie(ids: string[], lit: Set<string> | null) {
   return { on, image: on.length ? bubbleImage(parts, ids.length) : bubbleImage([], 1) };
 }
 
-// Les grappes du cran i : nommées par la ville de la plupart de leurs membres.
-export const clusters = (i: number, visible: Set<string>, lit: Lit) => collection(CLUSTERS[i].flatMap((cluster) => {
+// Les grappes de chaque cran (`notch`, son rang) : nommées par la ville de la plupart de leurs membres.
+export const clusters = (visible: Set<string>, lit: Lit) => collection(CLUSTER_ZOOMS.flatMap((_, notch) => CLUSTERS[notch].flatMap((cluster) => {
   const ids = cluster.ids.filter((id) => visible.has(id));
   if (!ids.length) return [];
   const { on, image } = pie(ids, lit);
   const byTown = ids.reduce((m, id) => m.set(orgTown(id), (m.get(orgTown(id)) || 0) + 1), new Map<string, number>());
-  return [point(cluster.center, { name: [...byTown].sort((a, b) => b[1] - a[1])[0][0], n: ids.length, a: on.length, ids: JSON.stringify(ids), image })];
-}));
+  return [point(cluster.center, { notch, name: [...byTown].sort((a, b) => b[1] - a[1])[0][0], n: ids.length, a: on.length, ids: JSON.stringify(ids), image })];
+})));
 
 // « Matane, Rimouski et Gaspé », ou « Matane, Rimouski et 3 autres villes »
 function otherTowns(names: string[]) {
   return names.length > 3 ? `${names.slice(0, 2).join(", ")} et ${names.length - 2} autres villes` : joinWithAnd(names);
 }
-// Les bulles des villes au niveau n ; une ville sans aucun membre mis en avant n'est plus qu'une pastille grise, sans nom.
-export const bubbles = (n: number, visible: Set<string>, lit: Lit) => collection(BUBBLES.get(n)!.flatMap((bubble) => {
+// Les bulles des villes à chaque niveau (`level`) ; une ville sans aucun membre mis en avant n'est plus qu'une pastille
+// grise, sans nom. Deux villes nommées ensemble le sont par un trait d'union : un tiret demanderait au navigateur un lot
+// de lettres de plus.
+export const bubbles = (visible: Set<string>, lit: Lit) => collection(BUBBLE_LEVELS.flatMap((level) => BUBBLES.get(level)!.flatMap((bubble) => {
   const ids = bubble.ids.filter((id) => visible.has(id));
   if (!ids.length) return [];
-  const { on, image } = pie(ids, lit), others = otherTowns([...new Set(ids.map(orgTown))].filter((name) => name !== bubble.name));
-  if (!on.length) return [point(bubble.center, { name: "", n: ids.length, a: 0, others, ids: JSON.stringify(ids), image })];
-  return [point(bubble.center, { name: ids.length > 1 ? bubble.name : "", n: ids.length, a: on.length, others, ids: JSON.stringify(ids),
+  const named = [bubble.name, ...(bubble.also && ids.some((id) => orgTown(id) === bubble.also) ? [bubble.also] : [])];
+  const { on, image } = pie(ids, lit), others = otherTowns([...new Set(ids.map(orgTown))].filter((name) => !named.includes(name)));
+  if (!on.length) return [point(bubble.center, { level, name: "", n: ids.length, a: 0, others, ids: JSON.stringify(ids), image })];
+  return [point(bubble.center, { level, name: ids.length > 1 ? named.join("-") : "", n: ids.length, a: on.length, others, ids: JSON.stringify(ids),
     image })];
-}));
+})));
 
 // Un nom par ville d'au moins deux membres visibles ; ses hauteurs par cran viennent du build pour la vue par défaut.
 export function townNames(visible: Set<string>) {

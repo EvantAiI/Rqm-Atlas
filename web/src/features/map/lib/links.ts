@@ -1,19 +1,21 @@
-// Les liens, en arcs : la couleur dit l'axe des projets partagés, l'épaisseur leur nombre. Chaque bout tombe sur ce qui
-// est dessiné au zoom courant (drawnAt). Deux bouts sur le même dessin ne font pas d'arc ; des arcs aux mêmes bouts n'en
-// font qu'un. En deux temps : le plan (qui relie qui) ne change qu'avec l'état et le cran de dessin ; la géométrie suit
-// le zoom. Un planificateur par sorte de sélection (PLANNERS), la vue d'ensemble sans sélection.
+// Les liens, en arcs : la couleur dit l'axe des projets partagés, l'épaisseur leur nombre. Entre deux villes, une seule
+// ligne, de gare à gare ; chaque acteur (ou grappe) dessiné n'est relié qu'une fois à la gare de sa ville, par un rayon.
+// Ailleurs (la fiche d'un membre, d'un projet, d'un sujet), chaque bout tombe sur ce qui est dessiné au zoom courant
+// (drawnAt) ; deux bouts sur le même dessin ne font pas d'arc, des arcs aux mêmes bouts n'en font qu'un.
+// En deux temps : le plan (qui relie qui) ne change qu'avec l'état et le cran de dessin ; la géométrie suit le zoom. Un
+// planificateur par sorte de sélection (PLANNERS), la vue d'ensemble sans sélection.
 import type { Feature, FeatureCollection } from "geojson";
-import { plural } from "../../../utils/format";
+import { joinWithAnd, plural } from "../../../utils/format";
 import { ROLE_LABELS } from "../../../data/categories";
 import { axisColour, dominantAxis } from "../../../data/axes";
-import { AXIS_BY_CODE, DATA, ORG_BY_ID, PARTICIPATIONS_BY_ORG, PARTICIPANTS_BY_PROJECT, PROJECT_BY_ID, orgTown, projectCount, projectOrgs } from "../../../data/dataset";
-import { linkLabel } from "../../../data/links";
+import { AXIS_BY_CODE, DATA, ORG_BY_ID, PARTICIPATIONS_BY_ORG, PARTICIPANTS_BY_PROJECT, PROJECT_BY_ID, orgTown, projectOrgs, starPartners } from "../../../data/dataset";
+import { endLabel, linkLabel } from "../../../data/links";
 import { MUNICIPALITIES, TOWN_BY_NAME, DOT_ZOOM, bubbleLevel, notchOf, drawnAt } from "../../../data/placement";
 import { findSubject } from "../../../data/subjects";
-import { townPartners } from "../../../data/towns";
-import { REGION_MEMBERS, regionPartners } from "../../../data/adminRegions";
+import { municipality } from "../../../data/regions";
+import { REGION_MEMBERS, orgRegion } from "../../../data/adminRegions";
 import { getOrCreate } from "../../../lib/collections";
-import { arc, toPixels } from "../../../lib/geometry";
+import { arc, fromPixels, lanes, shift, toPixels } from "../../../lib/geometry";
 import { touchesAxis } from "../../../lib/projects";
 import type { FiltersSlice } from "../../../stores/app/filtersSlice";
 import type { Selection } from "../../../stores/selection";
@@ -30,7 +32,14 @@ export interface TooltipLine { t: string; src?: boolean; bold?: boolean }
 type End = string | LngLat;   // un membre, là où il est dessiné ; ou un lieu fixe
 // Ce qu'un clic sur l'arc ouvre : la fiche « lien » (ses bouts sont ajoutés au dessin).
 export interface ArcLink { from: string[]; to: string[]; projects: string[]; colour: string }
-export interface PlannedArc { a: End; b: End; k: number; colour: string; width: number; opacity?: number; text: TooltipLine[]; link?: ArcLink }
+// Un bout de faisceau : les membres d'un même point dessiné (un acteur, une grappe), leurs partenaires d'en face et leurs
+// projets dans le faisceau.
+export interface Twig { ids: string[]; partners: string[]; projects: string[] }
+// Un faisceau : de chaque côté, sa gare (la commune, à tous les zooms), ses brindilles et le nom du côté d'en face.
+export interface Fanned { stations: [string, string]; sides: [Twig[], Twig[]]; names: [string, string] }
+// Un arc ; avec `fan`, un faisceau, dont `width` est la ligne de gare à gare et dont a et b ne servent plus qu'à le nommer.
+export interface PlannedArc { a: End; b: End; k: number; colour: string; width: number; opacity?: number; text: TooltipLine[]; link?: ArcLink;
+                              fan?: Fanned }
 // Un faisceau : des projets entre deux bouts, par axe ; from / to le nomment.
 interface Bundle { a: string; b: string; from: string; to: string; byAxis: Map<string, Set<string>> }
 interface Merged { a: string; b: string; from: string[]; to: string[]; byAxis: Map<string, Set<string>>; total: number }
@@ -45,11 +54,19 @@ const sizes = (bundles: Merged[]) => bundles.flatMap((b) => [...b.byAxis.values(
 const shortName = (id: string) => ORG_BY_ID.get(id)!.acronym || ORG_BY_ID.get(id)!.name;
 const drawn = (id: string, z: number) => String(drawnAt(id, z));
 
-// Le bout « ville » : celui des membres `ids` qui a le plus de projets (à égalité, le plus central).
-function towardTown(town: string, ids: string[], z: number) {
-  const center = TOWN_BY_NAME.get(town) || MUNICIPALITIES.get(town)!, c = toPixels(center.lat, center.lon, z);
-  const far = (id: string) => { const o = ORG_BY_ID.get(id)!, p = toPixels(o.lat!, o.lon!, z); return Math.hypot(p.x - c.x, p.y - c.y); };
-  return ids.reduce((m, id) => (projectCount(id) > projectCount(m) || (projectCount(id) === projectCount(m) && far(id) < far(m)) ? id : m));
+// Un lien d'acteur à acteur sur un projet, nommé par leurs villes (ou par `from` pour le membre d'une fiche).
+const pair = (a: string, b: string, project: string, axis = PROJECT_BY_ID.get(project)!.axis, from = orgTown(a)): Bundle =>
+  ({ a, b, from, to: orgTown(b), byAxis: new Map([[axis, new Set([project])]]) });
+
+// Dans une fiche, chaque membre de `here` vers chaque membre affiché, hors de `here`, à qui un projet le relie (en étoile).
+function partnersOf(here: string[], outside: (id: string) => boolean, visible: Set<string>, projects?: Set<string> | null, from?: (id: string) => string) {
+  const links: Bundle[] = [];
+  for (const id of here) for (const { project } of PARTICIPATIONS_BY_ORG.get(id) || []) {
+    if (projects && !projects.has(project)) continue;
+    const star = new Set(starPartners(id, project));
+    for (const other of shownParticipants(project, visible, id)) if (star.has(other) && outside(other)) links.push(pair(id, other, project, undefined, from?.(id)));
+  }
+  return links;
 }
 
 // Les mêmes faisceaux, fusionnés par bouts dessinés ; `unordered` : a -> b et b -> a sont le même.
@@ -66,7 +83,7 @@ function merge(bundles: Bundle[], z: number, unordered = false): Merged[] {
   return [...m.values()].map((x) => ({ ...x, from: [...x.from], to: [...x.to], total: [...x.byAxis.values()].reduce((t, l) => t + l.size, 0) }));
 }
 
-const linkOf = (x: Merged, colour: string): ArcLink => ({ from: x.from, to: x.to, colour, projects: [...new Set([...x.byAxis.values()].flatMap((l) => [...l]))] });
+const linkOf = (x: Pick<Merged, "from" | "to" | "byAxis">, colour: string): ArcLink => ({ from: x.from, to: x.to, colour, projects: [...new Set([...x.byAxis.values()].flatMap((l) => [...l]))] });
 
 // Un arc fin par axe, du plus fourni au moins fourni.
 function perAxis(bundles: Merged[], k0: number): PlannedArc[] {
@@ -75,6 +92,52 @@ function perAxis(bundles: Merged[], k0: number): PlannedArc[] {
     a: x.a, b: x.b, k: k0 + 0.06 * i, colour: axisColour(axis), width: 1.2 + 3.3 * Math.sqrt(projects.size / max), link: linkOf(x, axisColour(axis)),
     text: [{ t: linkLabel(x.from, x.to) }, { t: plural(projects.size, "projet"), src: true }, { t: AXIS_BY_CODE.get(axis)!.short, src: true }] })));
 }
+
+// Les deux côtés d'un faisceau : les communes, à tous les zooms. Une bulle tient parfois plusieurs villes ; grouper les
+// liens par bulle en cacherait (ceux d'une ville à l'autre de la bulle) et les ferait réapparaître en zoomant.
+const sideOf = (id: string) => municipality(orgTown(id));
+interface Point { ids: string[]; partners: Set<string>; projects: Set<string> }
+interface Fan { stations: [string, string]; sides: [Map<string, Point>, Map<string, Point>]; from: string[]; to: string[]; byAxis: Map<string, Set<string>>; total: number }
+
+// Les liens d'acteur à acteur, rangés en faisceaux de côté à côté ; de chaque côté, un point par dessin (acteur ou grappe).
+// `unordered` : a -> b et b -> a sont le même ; sinon le côté de a (la fiche ouverte) se nomme en premier. Deux acteurs
+// d'une même ville font un faisceau d'un côté au même : pas d'arc, mais chacun a son rayon, reliés par leur gare.
+function gather(bundles: Bundle[], z: number, unordered: boolean): Fan[] {
+  const m = new Map<string, { stations: [string, string]; sides: [Map<string, Point>, Map<string, Point>]; from: Set<string>; to: Set<string>; byAxis: Map<string, Set<string>> }>();
+  for (const x of bundles) {
+    let { a, b, from, to } = x, [sa, sb] = [sideOf(a), sideOf(b)];
+    if (unordered && sa > sb) [a, b, from, to, sa, sb] = [b, a, to, from, sb, sa];
+    const f = getOrCreate(m, `${sa}|${sb}`, () => ({ stations: [sa, sb] as [string, string], sides: [new Map(), new Map()] as Fan["sides"], from: new Set<string>(), to: new Set<string>(), byAxis: new Map<string, Set<string>>() }));
+    f.from.add(from); f.to.add(to);
+    const ends = [a, b].map((id, i) => {
+      const point = getOrCreate(f.sides[i], drawn(id, z), () => ({ ids: [], partners: new Set<string>(), projects: new Set<string>() }));
+      if (!point.ids.includes(id)) point.ids.push(id);
+      point.partners.add(i ? a : b);
+      return point;
+    });
+    for (const [axis, projects] of x.byAxis) for (const p of projects) { addTo(f.byAxis, axis, p); ends.forEach((e) => e.projects.add(p)); }
+  }
+  return [...m.values()].map((f) => ({ ...f, from: [...f.from], to: [...f.to], total: [...f.byAxis.values()].reduce((t, l) => t + l.size, 0) }))
+    .sort((x, y) => y.total - x.total);
+}
+
+const pointName = (ids: string[]) => (ids.length > 2 ? `${shortName(ids[0])} et ${ids.length - 1} autres` : joinWithAnd(ids.map(shortName)));
+const together = (n: number) => `${plural(n, "projet")} en commun`;
+
+// Un faisceau planifié : l'épaisseur de la ligne dit tous ses projets ; ses rayons se calculent au dessin.
+interface FanStyle { unordered?: boolean; k: number; colour?: string; opacity?: number; base: number; gain: number; max: number; clickable: boolean }
+function fanArc(f: Fan, { k, colour = axisColour(dominantAxis(f.byAxis)), opacity, base, gain, max, clickable }: FanStyle): PlannedArc {
+  const sides = f.sides.map((side) => [...side.values()].map((p) => ({ ids: p.ids, partners: [...p.partners], projects: [...p.projects] }))) as Fanned["sides"];
+  return { a: sides[0][0].ids[0], b: sides[1][0].ids[0], k, colour, width: base + gain * Math.sqrt(f.total / max), opacity,
+           fan: { stations: f.stations, sides, names: [endLabel(f.to), endLabel(f.from)] },
+           text: [{ t: linkLabel(f.from, f.to), bold: true }, { t: together(f.total), src: true }], ...(clickable && { link: linkOf(f, colour) }) };
+}
+// L'épaisseur se mesure au plus fourni des arcs (un faisceau dans une seule ville n'en dessine pas).
+const fans = (bundles: Bundle[], z: number, style: Omit<FanStyle, "max">) => {
+  const all = gather(bundles, z, Boolean(style.unordered)), max = Math.max(1, ...all.filter((f) => f.stations[0] !== f.stations[1]).map((f) => f.total));
+  return all.map((f) => fanArc(f, { ...style, max }));
+};
+const SHEET: Omit<FanStyle, "max"> = { k: 0.08, base: 1.2, gain: 4.3, clickable: true };
 
 // Les participants affichés d'un projet, dans une ville connue.
 const shownParticipants = (project: string, visible: Set<string>, except?: string) => projectOrgs(project)
@@ -96,41 +159,30 @@ function planProject(s: Selection, _: LinkInput, { z, visible }: Drawing): Plann
   return arcs;
 }
 
-// La fiche d'un membre : vers chaque ville où sont ses partenaires de projet (ceux de l'axe choisi dans la fiche).
+// La fiche d'un membre : un arc direct de son point vers chacun de ses partenaires de projet, en étoile (ceux de l'axe
+// choisi dans la fiche), de sa ville comme d'ailleurs, sans gare ; des partenaires dessinés au même endroit (une grappe)
+// n'en font qu'un.
 function planMember(s: Selection, input: LinkInput, { z, visible }: Drawing): PlannedArc[] {
   if (!visible.has(s.id)) return [];
-  const o = ORG_BY_ID.get(s.id)!, byTown = new Map<string, Map<string, Set<string>>>(), partners = new Map<string, Set<string>>();
-  for (const { project } of PARTICIPATIONS_BY_ORG.get(s.id) || []) {
-    if (input.sheetProjects && !input.sheetProjects.has(project)) continue;
-    for (const id of shownParticipants(project, visible, s.id)) {
-      const town = orgTown(id);
-      if (town === o.town) continue;
-      addTo(getOrCreate(byTown, town, () => new Map<string, Set<string>>()), PROJECT_BY_ID.get(project)!.axis, project); addTo(partners, town, id);
-    }
-  }
-  return perAxis(merge([...byTown].map(([town, byAxis]) => ({ a: s.id, b: towardTown(town, [...partners.get(town)!], z), from: shortName(s.id), to: town, byAxis })), z), 0.08);
-}
-
-// Une ville : vers chaque ville où ses membres ont des partenaires de projet.
-function planTown(s: Selection, _: LinkInput, { z, visible }: Drawing): PlannedArc[] {
-  const here = MUNICIPALITIES.get(s.id)!.ids.filter((id) => visible.has(id)), shown = (ids: string[]) => ids.filter((id) => visible.has(id));
-  if (!here.length) return [];
-  return perAxis(merge([...townPartners(s.id)].filter(([town]) => MUNICIPALITIES.has(town)).map(([town, l]) => ({
-    a: towardTown(s.id, here, z), b: towardTown(town, shown(l.ids).length ? shown(l.ids) : l.ids, z), from: s.id, to: town, byAxis: l.byAxis })), z), 0.08);
-}
-
-// Une région : de son membre le plus actif vers celui de chaque région où ses membres ont des partenaires de projet.
-// Sans fiche « lien » au clic : un trait entre deux régions n'a pas d'adresse.
-function planRegion(s: Selection, _: LinkInput, { z, visible }: Drawing): PlannedArc[] {
-  const mostActive = (ids: string[]) => ids.reduce((m, id) => (projectCount(id) > projectCount(m) ? id : m));
-  const here = REGION_MEMBERS.get(s.id)!.map((o) => o.id).filter((id) => visible.has(id));
-  if (!here.length) return [];
-  const bundles = [...regionPartners(s.id)].map(([other, l]) => {
-    const byAxis = new Map<string, Set<string>>(), shown = l.ids.filter((id) => visible.has(id));
-    for (const p of l.projects) addTo(byAxis, PROJECT_BY_ID.get(p)!.axis, p);
-    return { a: mostActive(here), b: mostActive(shown.length ? shown : l.ids), from: s.id, to: other, byAxis };
+  const links = partnersOf([s.id], (id) => id !== s.id, visible, input.sheetProjects, shortName).map((x) => ({ ...x, to: shortName(x.b) }));
+  const merged = merge(links, z), max = Math.max(1, ...merged.map((x) => x.total));
+  return merged.map((x) => {
+    const colour = axisColour(dominantAxis(x.byAxis));
+    return { a: x.a, b: x.b, k: SHEET.k, colour, width: SHEET.base + SHEET.gain * Math.sqrt(x.total / max), link: linkOf(x, colour),
+             text: [{ t: linkLabel(x.from, x.to), bold: true }, { t: together(x.total), src: true }] };
   });
-  return perAxis(merge(bundles, z), 0.08).map((x) => ({ ...x, link: undefined }));
+}
+
+// Une ville : de chacun de ses membres vers chacun de leurs partenaires de projet hors de la commune.
+function planTown(s: Selection, _: LinkInput, { z, visible }: Drawing): PlannedArc[] {
+  const here = MUNICIPALITIES.get(s.id)!.ids.filter((id) => visible.has(id));
+  return fans(partnersOf(here, (id) => municipality(orgTown(id)) !== s.id, visible, null, () => s.id), z, SHEET);
+}
+
+// Une région : de chacun de ses membres vers chacun de leurs partenaires de projet hors de la région.
+function planRegion(s: Selection, _: LinkInput, { z, visible }: Drawing): PlannedArc[] {
+  const here = REGION_MEMBERS.get(s.id)!.map((o) => o.id).filter((id) => visible.has(id));
+  return fans(partnersOf(here, (id) => orgRegion(id) !== s.id, visible), z, SHEET);
 }
 
 // Un sujet : de chaque porteur vers les autres membres de ses projets sur ce sujet, un arc par paire de bouts et par axe.
@@ -145,34 +197,30 @@ function planSubject(s: Selection, _: LinkInput, { z, visible }: Drawing): Plann
   return perAxis(merge(bundles, z, true), 0.1);
 }
 
-// Un lien ouvert : son trait seul, épais.
-function planLink(s: Selection): PlannedArc[] {
-  return s.type === "link" ? [{ a: s.a, b: s.b, k: 0.12, colour: s.colour, width: 5, opacity: 0.9, text: [{ t: s.id }] }] : [];
+// Les membres qu'un bout de lien nomme : ceux de ses villes (ou communes), ou l'organisation qu'il nomme.
+const named = (names: string[], visible: Set<string>) => [...visible].filter((id) =>
+  names.includes(orgTown(id)) || names.includes(municipality(orgTown(id))) || names.includes(shortName(id)));
+
+// Un lien ouvert : de chaque membre d'un bout vers chaque membre de l'autre avec qui il partage l'un de ses projets.
+function planLink(s: Selection, _: LinkInput, { z, visible }: Drawing): PlannedArc[] {
+  if (s.type !== "link") return [];
+  const { from, to, projects, colour } = s, b = new Set(named(to, visible)), mine = new Set(projects);
+  return fans(partnersOf(named(from, visible), (id) => b.has(id), visible, mine), z, { k: 0.12, colour, opacity: 0.9, base: 2, gain: 3, clickable: false });
 }
 
-// La vue d'ensemble : les 25 paires (de villes, ou de bulles aux zooms éloignés) qui partagent le plus de projets, de
-// l'axe choisi s'il y en a un.
+// La vue d'ensemble : dans chaque projet (de l'axe choisi s'il y en a un), son porteur vers chaque autre participant
+// affiché, comme dans les fiches ; les liens d'une ville à l'autre n'en font qu'un, plus épais.
 export function planOverview(input: LinkInput, { z, visible }: Drawing): PlannedArc[] {
-  const pairs = new Map<string, Map<string, Set<string>>>(), members = new Map<string, Set<string>>(), tab = input.tab;
+  const tab = input.tab, links: Bundle[] = [];
   for (const p of tab === "projects" ? shownProjects(input) : DATA.projects) {
     if (tab === "members" && !touchesAxis(p, input.memberAxis, input.memberMainOnly)) continue;
-    const ids = shownParticipants(p.id, visible), towns = [...new Set(ids.map(orgTown))].sort();
-    for (const id of ids) addTo(members, orgTown(id), id);
-    const axis = (tab === "members" ? input.memberAxis : input.projectFilters.axis) || p.axis;
-    for (let i = 0; i < towns.length; i++) for (let j = i + 1; j < towns.length; j++) {
-      addTo(getOrCreate(pairs, `${towns[i]}\u0000${towns[j]}`, () => new Map<string, Set<string>>()), axis, p.id);
+    const axis = (tab === "members" ? input.memberAxis : input.projectFilters.axis) || p.axis, shown = new Set(shownParticipants(p.id, visible));
+    const parts = (PARTICIPANTS_BY_PROJECT.get(p.id) || []).filter((x) => shown.has(x.org));
+    for (const lead of parts.filter((x) => x.role === "principal")) for (const x of parts) {
+      if (x.org !== lead.org) links.push(pair(lead.org, x.org, p.id, axis));
     }
   }
-  const bundles = merge([...pairs].map(([key, byAxis]) => {
-    const [a, b] = key.split("\u0000");
-    return { a: towardTown(a, [...members.get(a)!], z), b: towardTown(b, [...members.get(b)!], z), from: a, to: b, byAxis };
-  }), z, true).sort((x, y) => y.total - x.total).slice(0, 25);
-  const max = Math.max(1, ...bundles.map((x) => x.total));
-  return bundles.map((x) => {
-    const colour = axisColour(dominantAxis(x.byAxis));
-    return { a: x.a, b: x.b, k: 0.12, colour, width: 1.2 + 4.3 * Math.sqrt(x.total / max), opacity: 0.8, link: linkOf(x, colour),
-      text: [{ t: linkLabel(x.from, x.to), bold: true }, { t: `${plural(x.total, "projet")} en commun`, src: true }] };
-  });
+  return fans(links, z, { unordered: true, k: 0.12, opacity: 0.8, base: 1.2, gain: 4.3, clickable: true });
 }
 
 type Planner = (s: Selection, input: LinkInput, drawing: Drawing) => PlannedArc[];
@@ -189,17 +237,77 @@ export function plan(input: LinkInput, z: number): PlannedArc[] {
 const at = (e: End, z: number) => (typeof e === "string" ? drawnAt(e, z) : e);
 
 // Les bouts de chaque arc au zoom z : si rien n'a bougé depuis la dernière fois, la source n'a pas à changer.
-export const endsKey = (arcs: PlannedArc[], z: number) => arcs.map((x) => `${at(x.a, z)}|${at(x.b, z)}`).join(";");
+export const endsKey = (arcs: PlannedArc[], z: number) => arcs.map((x) =>
+  (x.fan ? x.fan.sides.flat().map((b) => at(b.ids[0], z)).join("|") : `${at(x.a, z)}|${at(x.b, z)}`)).join(";");
+
+// Les membres qu'un trait touche, en « ,id,id, » : le survol d'un point, d'une bulle ou d'une grappe qui les tient le
+// met en avant.
+const touching = (ids: End[]) => `,${ids.filter((e) => typeof e === "string").join(",")},`;
+
+type Pixel = { x: number; y: number };
+// `open` : les membres dont un clic ouvre la fiche (un rayon)
+interface Line { width: number; text: TooltipLine[]; m: string; link?: ArcLink & { ends: LngLat[] }; open?: string[] }
+
+// Un point relié à sa gare : les membres qu'il tient, leurs partenaires, leurs projets, les villes d'en face.
+interface Spoke { at: Pixel; ids: Set<string>; partners: Set<string>; projects: Set<string>; towards: Set<string> }
+const SPOKE = { colour: "#64748b", opacity: 0.55, width: 1.4 };
+
+// Les gares au zoom z : une par côté, quel que soit le faisceau ; chaque point n'y a qu'un rayon, même s'il travaille
+// avec dix villes. Toujours sur la ville elle-même, à tous les zooms : un arc ne bouge pas quand on zoome, et la gare n'est
+// jamais un membre (on croirait que tous les autres travaillent avec lui). Sous DOT_ZOOM, la bulle couvre la gare : ni
+// rayon ni rond. Au-dessus, un rond quand plusieurs points s'y relient.
+function stations(arcs: PlannedArc[], z: number) {
+  const all = new Map<string, Map<string, Spoke>>();
+  for (const x of arcs) x.fan?.sides.forEach((side, i) => {
+    for (const b of side) {
+      const [lon, lat] = at(b.ids[0], z);
+      if (!isOnArcMap([lon, lat])) continue;
+      const spokes = getOrCreate(all, x.fan!.stations[i], () => new Map<string, Spoke>());
+      const s = getOrCreate(spokes, `${lon},${lat}`, () => ({ at: toPixels(lat, lon, z), ids: new Set<string>(), partners: new Set<string>(), projects: new Set<string>(), towards: new Set<string>() }));
+      b.ids.forEach((id) => s.ids.add(id)); b.partners.forEach((id) => s.partners.add(id)); b.projects.forEach((p) => s.projects.add(p));
+      s.towards.add(x.fan!.names[i]);
+    }
+  });
+  return new Map([...all].map(([key, m]) => {
+    const all = [...m.values()], town = MUNICIPALITIES.get(key), spokes = z < DOT_ZOOM ? [] : all;
+    return [key, { at: town ? toPixels(town.lat, town.lon, z) : all[0].at, marked: spokes.length > 1, spokes }];
+  }));
+}
+
+const towardsText = (towns: Set<string>) => (towns.size > 2 ? `${towns.size} villes` : joinWithAnd([...towns]));
 
 export function geometry(arcs: PlannedArc[], z: number): FeatureCollection {
-  const features: Feature[] = [];
+  const features: Feature[] = [], ll = (p: Pixel) => fromPixels(p.x, p.y, z), hubs = stations(arcs, z);
+  const push = (line: LngLat[], { text, link, open, ...props }: Line & { colour: string; opacity: number }) => {
+    features.push({ type: "Feature", geometry: { type: "LineString", coordinates: line },
+      properties: { ...props, text: JSON.stringify(text), ...(link && { link: JSON.stringify(link) }), ...(open && { open: JSON.stringify(open) }) } });
+  };
+  // les rayons : de chaque point à sa gare, droits, fins et neutres ; la couleur reste aux lignes entre villes. Une gare
+  // à rayons est marquée d'un rond neutre, qui n'est pas un membre.
+  for (const [town, { at: g, marked, spokes }] of hubs) for (const s of spokes) {
+    if (s === spokes[0] && marked) features.push({ type: "Feature", geometry: { type: "Point", coordinates: ll(g) }, properties: { town } });
+    if (Math.hypot(s.at.x - g.x, s.at.y - g.y) < 1) continue;
+    const ids = [...s.ids];
+    push([ll(s.at), ll(g)], { ...SPOKE, m: touching([...ids, ...s.partners]), open: ids,
+      text: [{ t: pointName(ids), bold: true }, { t: `${plural(s.projects.size, "projet")} avec ${towardsText(s.towards)}`, src: true }] });
+  }
+  const drawn: { line: LngLat[]; width: number; props: Line & { colour: string; opacity: number } }[] = [];
   for (const x of arcs) {
+    const feature = (line: LngLat[], props: Line) => drawn.push({ line, width: props.width, props: { opacity: x.opacity ?? 0.85, colour: x.colour, ...props } });
+    if (x.fan) {
+      const [g0, g1] = x.fan.stations.map((key) => hubs.get(key)?.at);
+      if (!g0 || !g1 || Math.hypot(g1.x - g0.x, g1.y - g0.y) < 1) continue;
+      const ends = [ll(g0), ll(g1)];
+      feature(arc(ends[0], ends[1], x.k), { width: x.width, text: x.text, m: touching(x.fan.sides.flat().flatMap((b) => b.ids)),
+        ...(x.link && { link: { ...x.link, ends } }) });
+      continue;
+    }
     const a = at(x.a, z), b = at(x.b, z);
     // un membre hors des limites de la carte (Vancouver, Montpellier) : pas d'arc qu'on ne pourrait pas suivre
     if (!isOnArcMap(a) || !isOnArcMap(b)) continue;
-    features.push({ type: "Feature", geometry: { type: "LineString", coordinates: arc(a, b, x.k) },
-      properties: { opacity: x.opacity ?? 0.85, colour: x.colour, width: x.width, text: JSON.stringify(x.text),
-                    ...(x.link && { link: JSON.stringify({ ...x.link, ends: [a, b] }) }) } });
+    feature(arc(a, b, x.k), { width: x.width, text: x.text, m: touching([x.a, x.b]), ...(x.link && { link: { ...x.link, ends: [a, b] } }) });
   }
+  // côte à côte : chaque arc poussé sur sa droite, du décalage de départ à celui d'arrivée ; un seul trait, sans jointure
+  lanes(drawn).forEach(([o0, o1], i) => push(o0 || o1 ? shift(drawn[i].line, o0, o1, z) : drawn[i].line, drawn[i].props));
   return { type: "FeatureCollection", features };
 }

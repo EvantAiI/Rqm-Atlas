@@ -82,13 +82,81 @@ export function mergeBubbles(towns: (Pixel & { name: string; ids: string[] })[],
   }
   return groups;
 }
-// Un arc de a à b ([lon, lat]) : une courbe de Bézier tracée en pixels Mercator, bombée à gauche de a -> b de `k` fois
-// sa longueur ; la même forme à tout zoom. 25 points.
+// Un arc de a à b ([lon, lat]) : une courbe de Bézier tracée en pixels Mercator, bombée de `k` fois sa longueur,
+// toujours vers le nord-ouest : deux arcs de même direction s'emboîtent en arc-en-ciel au lieu de se croiser en X.
+// La même forme à tout zoom. 25 points.
 export function arc(a: [number, number], b: [number, number], k: number) {
   const p = toPixels(a[1], a[0], 6), q = toPixels(b[1], b[0], 6);
-  const c = { x: (p.x + q.x) / 2 + (q.y - p.y) * k, y: (p.y + q.y) / 2 - (q.x - p.x) * k };
+  const nx = q.y - p.y, ny = p.x - q.x, side = nx + ny > 0 ? -1 : 1;   // nord-ouest = x et y négatifs en pixels
+  const c = { x: (p.x + q.x) / 2 + nx * k * side, y: (p.y + q.y) / 2 + ny * k * side };
   return Array.from({ length: 25 }, (_, i) => {
     const t = i / 24, u = 1 - t;
     return fromPixels(u * u * p.x + 2 * u * t * c.x + t * t * q.x, u * u * p.y + 2 * u * t * c.y + t * t * q.y, 6);
   });
+}
+
+// Les traits qui partent d'un même bout presque dans la même direction sont posés côte à côte, comme les bandes d'un
+// arc-en-ciel, au lieu de se recouvrir. Rien n'est attiré : chaque trait reçoit, à chacun de ses bouts, un décalage en
+// pixels écran (positif à droite du sens du trait), que `shift` applique au zoom dessiné.
+// Dans une bande, l'ordre suit l'endroit où chaque trait s'en va, pour qu'ils ne se croisent pas en sortant.
+// Les bandes s'ouvrent sur LANE_EASE pixels écran : chaque trait part du point même, puis rejoint sa bande en douceur.
+export const LANE_ANGLE = (8 * Math.PI) / 180, LANE_GAP = 1, LANE_EASE = 40;
+const ease = (d: number) => { const s = Math.min(d / LANE_EASE, 1); return s * s * (3 - 2 * s); };
+// Un trait ([lon, lat]) poussé sur sa droite de o0 pixels écran au départ à o1 à l'arrivée, au zoom z ; nul aux deux bouts.
+export function shift(line: [number, number][], o0: number, o1: number, z: number) {
+  const px = line.map(([lon, lat]) => toPixels(lat, lon, z)), at = [0];
+  for (let i = 1; i < px.length; i++) at.push(at[i - 1] + Math.hypot(px[i].x - px[i - 1].x, px[i].y - px[i - 1].y));
+  const total = at[at.length - 1];
+  // assez de points près des bouts pour que la courbe d'ouverture reste lisse, même quand un segment est long
+  const steps = Array.from({ length: 8 }, (_, k) => (LANE_EASE * (k + 1)) / 8);
+  const ds = [...new Set([...at, ...steps, ...steps.map((d) => total - d)])].filter((d) => d >= 0 && d <= total).sort((a, b) => a - b);
+  let seg = 0;
+  return ds.map((d) => {
+    while (seg < px.length - 2 && at[seg + 1] < d) seg++;
+    const a = px[seg], b = px[seg + 1], len = at[seg + 1] - at[seg] || 1, t = (d - at[seg]) / len;
+    const o = (o0 + ((o1 - o0) * d) / (total || 1)) * ease(d) * ease(total - d);
+    const x = a.x + (b.x - a.x) * t, y = a.y + (b.y - a.y) * t;
+    return fromPixels(x - ((b.y - a.y) / len) * o, y + ((b.x - a.x) / len) * o, z);
+  });
+}
+export function lanes(lines: { line: [number, number][]; width: number }[]): [number, number][] {
+  const offsets = lines.map((): [number, number] => [0, 0]);
+  const ends = new Map<string, { i: number; end: 0 | 1; dir: number; mid: Pixel }[]>();
+  lines.forEach(({ line }, i) => {
+    for (const end of [0, 1] as const) {
+      const pts = (end ? [...line].reverse() : line).map(([lon, lat]) => toPixels(lat, lon, 6));
+      const e = pts[0], next = pts[1], mid = pts[pts.length >> 1];
+      getOrCreate(ends, `${e.x.toFixed(1)},${e.y.toFixed(1)}`, () => [])
+        .push({ i, end, dir: Math.atan2(next.y - e.y, next.x - e.x), mid: { x: mid.x - e.x, y: mid.y - e.y } });
+    }
+  });
+  for (const here of ends.values()) {
+    if (here.length < 2) continue;
+    here.sort((a, b) => a.dir - b.dir);
+    // on commence après le plus grand vide entre deux directions, pour ne pas couper une bande à -π/π
+    let start = 0, widest = -1;
+    here.forEach((x, k) => { const gap = (x.dir - here[(k + here.length - 1) % here.length].dir + 2 * Math.PI) % (2 * Math.PI); if (gap > widest) { widest = gap; start = k; } });
+    // une bande ne s'ouvre pas sur plus de LANE_ANGLE en tout : sinon des traits qui tournent peu à peu s'enchaîneraient en
+    // un ruban sans fin
+    const turned = [...here.slice(start), ...here.slice(0, start)], bands: (typeof here)[] = [[turned[0]]];
+    for (let k = 1; k < turned.length; k++) {
+      const band = bands[bands.length - 1], spread = (turned[k].dir - band[0].dir + 2 * Math.PI) % (2 * Math.PI);
+      if (spread < LANE_ANGLE) band.push(turned[k]); else bands.push([turned[k]]);
+    }
+    for (const band of bands) {
+      if (band.length < 2) continue;
+      const dx = band.reduce((s, x) => s + Math.cos(x.dir), 0), dy = band.reduce((s, x) => s + Math.sin(x.dir), 0), d = Math.hypot(dx, dy);
+      const ux = dx / d, uy = dy / d, n = { x: -uy, y: ux };   // n : la droite de la direction commune, à l'écran
+      const side = (m: Pixel) => Math.atan2(n.x * m.x + n.y * m.y, ux * m.x + uy * m.y);
+      band.sort((a, b) => side(a.mid) - side(b.mid));
+      const total = band.reduce((s, x) => s + lines[x.i].width, 0) + LANE_GAP * (band.length - 1);
+      let at = -total / 2;
+      for (const x of band) {
+        const p = at + lines[x.i].width / 2;
+        offsets[x.i][x.end] = x.end ? -p : p;   // au bout d'arrivée, le trait va dans l'autre sens : sa droite est à gauche
+        at += lines[x.i].width + LANE_GAP;
+      }
+    }
+  }
+  return offsets;
 }

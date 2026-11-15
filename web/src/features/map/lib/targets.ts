@@ -34,21 +34,28 @@ function under(map: MapLibre, at: Pixel, slop: number): Target | undefined {
            ids: ids === undefined ? undefined : JSON.parse(ids), name, others, n, a };
 }
 
-export interface LinkTarget { key: string; text: TooltipLine[]; link?: LinkSelection }
+// `open` : un rayon, dont le clic ouvre la fiche de son membre (ou de sa grappe) ; `town` : une gare, la fiche de sa ville
+export interface LinkTarget { key: string; text: TooltipLine[]; link?: LinkSelection; open?: string[]; town?: string }
+function stationUnder(map: MapLibre, at: Pixel, slop: number): LinkTarget | undefined {
+  const town = map.queryRenderedFeatures(around(at, slop), { layers: ["links-stations"] })[0]?.properties.town as string | undefined;
+  return town === undefined ? undefined : { key: `station:${town}`, text: [{ t: town, bold: true }], town };
+}
+// Plusieurs traits sous le pointeur : le plus épais, celui du premier plan.
 function linkUnder(map: MapLibre, at: Pixel, slop: number): LinkTarget | undefined {
-  const f = map.queryRenderedFeatures(around(at, slop), { layers: ["links-target"] })[0];
+  const f = map.queryRenderedFeatures(around(at, slop), { layers: ["links-target"] })
+    .reduce<MapGeoJSONFeature | undefined>((best, x) => (!best || x.properties.width > best.properties.width ? x : best), undefined);
   if (!f) return undefined;
   const raw = f.properties.link ? JSON.parse(f.properties.link) as ArcLink & { ends: [LngLat, LngLat] } : undefined;
   return { key: `link:${f.properties.text}`, text: JSON.parse(f.properties.text),
-           link: raw && makeLink(raw.from, raw.to, raw.projects, raw.ends, raw.colour) };
+           link: raw && makeLink(raw.from, raw.to, raw.projects, raw.ends, raw.colour), open: f.properties.open && JSON.parse(f.properties.open) };
 }
 
-// Ce qui est sous le pointeur, exactement, puis (au doigt) dans la marge : un point avant un trait à chaque fois.
+// Ce qui est sous le pointeur, exactement, puis (au doigt) dans la marge : un point, puis une gare, avant un trait.
 export function targetAt(map: MapLibre, at: Pixel, slop = 0): { point?: Target; link?: LinkTarget } {
   for (const r of slop ? [0, slop] : [0]) {
     const point = under(map, at, r);
     if (point) return { point };
-    const link = linkUnder(map, at, r);
+    const link = stationUnder(map, at, r) ?? linkUnder(map, at, r);
     if (link) return { link };
   }
   return {};

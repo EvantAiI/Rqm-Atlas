@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { MEMBERS } from "../data/dataset";
-import { arc, fromPixels, spreadDots, groupTouching, bubbleRadius, mergeBubbles, splitWide, toPixels } from "./geometry";
+import { arc, fromPixels, spreadDots, groupTouching, bubbleRadius, mergeBubbles, splitWide, toPixels, lanes, shift, LANE_EASE } from "./geometry";
 
 const PLACED = MEMBERS.filter((o) => o.lat !== undefined);
 
@@ -44,12 +44,41 @@ test("town bubbles: none touches another, each member in exactly one, Rimouski k
   expect(mergeBubbles([{ name: "A", x: 0, y: 0, ids: ["a", "b"] }, { name: "B", x: 5, y: 0, ids: ["c"] }, { name: "C", x: 500, y: 0, ids: ["d"] }], 3)
     .map((g) => [g.name, g.ids.length])).toEqual([["A", 3], ["C", 1]]);
 });
-test("an arc leaves a, reaches b and bulges to the left of a -> b", () => {
+// Tous les arcs bombent vers le nord-ouest, dans un sens comme dans l'autre : ils s'emboîtent en arc-en-ciel.
+test("an arc leaves a, reaches b and always bulges to the north-west", () => {
   const rimouski: [number, number] = [-68.52, 48.45], montreal: [number, number] = [-73.57, 45.5];
-  const curve = arc(rimouski, montreal, 0.1);
+  const curve = arc(rimouski, montreal, 0.1), straight = arc(rimouski, montreal, 0)[12];
   expect(curve.length).toBe(25);
   for (const [u, v] of [[curve[0], rimouski], [curve[24], montreal]]) expect(Math.abs(u[0] - v[0]) < 1e-9 && Math.abs(u[1] - v[1]) < 1e-9).toBe(true);
-  expect(curve[12][1]).toBeLessThan(arc(rimouski, montreal, 0)[12][1]);
+  for (const mid of [curve[12], arc(montreal, rimouski, 0.1)[12]]) {
+    expect(mid[0]).toBeLessThan(straight[0]);
+    expect(mid[1]).toBeGreaterThan(straight[1]);
+  }
+});
+// Deux traits qui partent d'un même bout presque dans la même direction se posent côte à côte, chacun d'un côté ; un
+// trait qui part ailleurs, et chaque bout seul, ne bouge pas.
+test("lines leaving one end in nearly the same direction lie side by side", () => {
+  const from: [number, number] = [-68.52, 48.45], far = (lon: number, lat: number) => arc(from, [lon, lat], 0.1);
+  const [a, b, c] = lanes([{ line: far(-73.57, 45.5), width: 3 }, { line: far(-73.3, 45.6), width: 3 }, { line: far(-64.5, 48.8), width: 3 }]);
+  expect([Math.abs(a[0]), Math.abs(b[0])]).toEqual([2, 2]);
+  expect(a[0]).toBe(-b[0]);
+  expect([a[1], b[1], c[0], c[1]]).toEqual([0, 0, 0, 0]);
+});
+// Un trait poussé sur sa droite : vers l'est, la droite est le sud. Il part du point même, s'écarte en douceur sur
+// LANE_EASE pixels, puis court à 3 pixels écran de sa place, au zoom dessiné, jusqu'à revenir sur l'autre bout.
+test("a shifted line leaves from its very end, eases into its lane, runs the given pixels to its right", () => {
+  const z = 7, line: [number, number][] = [[-70, 47], [-69, 47], [-68, 47]], moved = shift(line, 3, 3, z);
+  const base = toPixels(47, -70, z), px = moved.map(([lon, lat]) => toPixels(lat, lon, z)), last = px[px.length - 1];
+  expect(Math.hypot(px[0].x - base.x, px[0].y - base.y)).toBeLessThan(1e-6);
+  expect(Math.hypot(last.x - toPixels(47, -68, z).x, last.y - base.y)).toBeLessThan(1e-6);
+  const off = px.map((p) => ({ along: p.x - base.x, by: p.y - base.y }));
+  for (let i = 1; i < off.length; i++) expect(off[i].along).toBeGreaterThan(off[i - 1].along);   // dans l'ordre, sans recul
+  const middle = off.filter((p) => p.along >= LANE_EASE && p.along <= px[px.length - 1].x - base.x - LANE_EASE);
+  expect(middle.length).toBeGreaterThan(0);
+  expect(middle.every((p) => Math.abs(p.by - 3) < 1e-6)).toBe(true);
+  const opening = off.filter((p) => p.along > 0 && p.along < LANE_EASE);
+  expect(opening.length).toBeGreaterThan(4);   // assez de points pour une ouverture lisse
+  for (let i = 1; i < opening.length; i++) expect(opening[i].by).toBeGreaterThanOrEqual(opening[i - 1].by);
 });
 const sorted = (l: string[][]) => l.map((g) => [...g].sort().join(",")).sort();
 test("dots touching neighbour to neighbour make a group; a far one stays alone", () => {

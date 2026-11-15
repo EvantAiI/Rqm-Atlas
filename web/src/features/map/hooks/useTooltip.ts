@@ -42,10 +42,12 @@ export function useTooltip(map: MapLibre | null) {
     const update = () => {
       frame = 0;
       const e = last!, { point: f, link: t } = targetAt(map, e.point);
-      canvas.style.cursor = f || t?.link ? "pointer" : "";
+      canvas.style.cursor = f || t?.link || t?.open || t?.town ? "pointer" : "";
       if (t) {
         // le trait : la bulle suit le pointeur
-        if (shown !== t.key) tip.setOffset([0, -8]).setDOMContent(content([...t.text, ...(t.link ? [{ t: "Cliquez pour les voir", src: true }] : [])]));
+        // ce qu'un clic ouvre : les projets du trait, la ville d'une grappe, la fiche d'un membre ou d'une gare
+        const hint = t.link ? "Cliquez pour les voir" : t.open && t.open.length > 1 ? "Cliquez pour leur ville" : t.open || t.town ? "Cliquez pour sa fiche" : "";
+        if (shown !== t.key) tip.setOffset([0, -8]).setDOMContent(content([...t.text, ...(hint ? [{ t: hint, src: true }] : [])]));
         tip.setLngLat(e.lngLat).addTo(map); shown = t.key;
         return;
       }

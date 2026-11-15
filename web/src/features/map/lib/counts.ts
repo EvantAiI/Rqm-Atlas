@@ -8,4 +8,4 @@ export const highlightWords = (selection: Selection | null, tab: Tab) =>
   selection ? "liés à la fiche ouverte" : tab === "projects" ? "dans les projets affichés" : null;
 
 export const countCaption = (selection: Selection | null, tab: Tab) =>
-  `Les chiffres : les membres ${highlightWords(selection, tab) ?? "de chaque ville"}`;
+  `Les chiffres : les membres ${highlightWords(selection, tab) ?? "de chaque bulle"}`;
