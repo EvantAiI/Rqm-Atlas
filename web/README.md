@@ -62,6 +62,7 @@ restent en français : ce sont des liens déjà partagés et des réglages déj�
 visiteurs.
 
 Avec `?debug` dans l'adresse, `window.appStore` et `window.mapStore` sont accessibles (scripts de rendu, console).
+Avec `?notour`, la visite guidée ne s'ouvre jamais d'elle-même. Le « ? » la lance toujours.
 
 ## Lancer
 
