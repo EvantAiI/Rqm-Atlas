@@ -58,3 +58,6 @@ Aucun fichier n'approche la limite de 100 Mo de GitHub.
 
 Dans une iframe, la molette fait défiler la page qui l'accueille ; on zoome sur la carte avec Ctrl (ou ⌘) et la molette.
 `allow="geolocation"` laisse « près de chez moi » demander la position du visiteur.
+
+Avec `?notour` au bout de l'adresse (`https://<compte>.github.io/<dépôt>/?notour`), la visite guidée ne s'ouvre
+jamais d'elle-même. Le « ? » la lance toujours.

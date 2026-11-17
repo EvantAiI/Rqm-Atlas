@@ -7,12 +7,13 @@ import { useTourStore } from "../../../stores/tourStore";
 import { TOUR_SEEN_KEY } from "../../../constants/storageKeys";
 
 // Premier passage, sans lien vers une fiche ou une vue : la visite, une fois le réseau tissé.
+// ?notour, choisi par qui met la carte en ligne : jamais d'elle-même, le « ? » la lance toujours.
 export function useFirstVisit() {
   const map = useMapStore((state) => state.map);
   useEffect(() => {
     let seen = false;
     try { seen = localStorage.getItem(TOUR_SEEN_KEY) === "vu"; } catch { /* sans stockage : comme une première fois */ }
-    if (seen || location.hash || !map) return;
+    if (seen || location.hash || new URLSearchParams(location.search).has("notour") || !map) return;
     let timer = 0;
     const go = () => { timer = window.setTimeout(() => { if (!useAppStore.getState().selection) useTourStore.getState().openTour(); }, 2600); };
     if (map.loaded()) go(); else map.once("idle", go);
